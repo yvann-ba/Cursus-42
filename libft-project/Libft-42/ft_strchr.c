@@ -1,0 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 15:32:00 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/05 11:10:23 by ybarbot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strchr(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if ((unsigned char)str[i] == (unsigned char)c)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if ((unsigned char)str[i] == (unsigned char)c)
+		return ((char *)&str[i]);
+	return (0);
+}
