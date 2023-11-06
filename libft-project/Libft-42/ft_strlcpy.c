@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inyancat <inyancat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created  2016/11/11 16:47:32 by inyancat          #+#    #+#             */
-/*   Updated  2016/11/12 20:21:42 by inyancat         ###   ########.fr       */
+/*   Created: 2023/11/06 14:03:26 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/06 14:18:06 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <stdarg.h>
-extern int g_log_fd;
+#include "libft.h"   
 
-void error(int code, int a, const char *pattern, ...)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	va_list	va;
+	size_t	i;
 
-	va_start(va, pattern);
-	(void)a;
-	vdprintf(g_log_fd, pattern, va);
-	dprintf(g_log_fd, "\n");
-	va_end(va);
-	exit(code);
+	i = 0;
+	while ((i < size - 1) && (dst[i] != '\0') && (src[i] != '\0'))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (i);
 }

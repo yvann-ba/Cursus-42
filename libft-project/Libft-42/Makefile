@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/06 11:02:38 by ybarbot          ###   ########.fr        #
+#    Updated: 2023/11/06 14:03:34 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ ft_memset.c \
 ft_memcmp.c \
 ft_bzero.c \
 ft_memcpy.c \
+ft_memmove.c \
+ft_strlcpy.c \
 
 
 
