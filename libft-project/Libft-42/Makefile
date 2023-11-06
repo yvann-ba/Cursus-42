@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/05 11:23:40 by ybarbot          ###   ########.fr        #
+#    Updated: 2023/11/06 11:02:38 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ ft_strrchr.c \
 ft_strncmp.c \
 ft_memchr.c \
 ft_memset.c \
+ft_memcmp.c \
+ft_bzero.c \
+ft_memcpy.c \
+
 
 
 OBJ = $(SRC:.c=.o)
