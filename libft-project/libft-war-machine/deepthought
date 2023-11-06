@@ -3,7 +3,7 @@ $> hostname; uname -msr
 2B5.42angouleme.fr
 Linux 5.15.0-88-generic x86_64
 $> date
-Mon Nov  6 03:51:05 PM CET 2023
+Mon Nov  6 04:30:23 PM CET 2023
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -18,6 +18,10 @@ InstalledDir: /usr/bin
 
 = libft.h=======================================================================
 $> norminette libft.h | grep -E '(Error|Warning)'
+/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/dirlibft/libft.h: Error!
+Error: MISALIGNED_FUNC_DECL (line:  32, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  35, col:   5):	Misaligned function declaration
+Norme check failed
 
 = Compiling libft ==============================================================
 $> make re
@@ -47,7 +51,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r-- 1 ybarbot 2023_angouleme 20702 Nov  6 15:51 /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/dirlibft/libft.a
+-rw-r--r-- 1 ybarbot 2023_angouleme 20702 Nov  6 16:30 /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -83,13 +87,16 @@ Error: BRACE_SHOULD_EOL     (line:  25, col:   1):	Expected newline after brace
 Norme check failed
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_bzero.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_bzero/main.c:28:3: error: implicit declaration of function 'ft_bzero' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_bzero(mem, 5);
-                ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_bzero/main.c:34:3: error: implicit declaration of function 'ft_bzero' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_bzero(mem, 0);
-                ^
-2 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
 
 = ft_calloc.c ==================================================================
 $> norminette ft_calloc.c | grep -E '(Error|Warning)'
@@ -121,100 +128,116 @@ Diff OK :D
 $> norminette ft_memmove.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memmove.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:30:15: error: implicit declaration of function 'ft_memmove' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (dest != ft_memmove(dest, "consectetur", 5))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:30:15: note: did you mean 'memmove'?
-/usr/include/string.h:47:14: note: 'memmove' declared here
-extern void *memmove (void *__dest, const void *__src, size_t __n)
-             ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:30:12: error: comparison between pointer and integer ('char *' and 'int') [-Werror,-Wpointer-integer-compare]
-                if (dest != ft_memmove(dest, "consectetur", 5))
-                    ~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:36:15: error: implicit declaration of function 'ft_memmove' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (dest != ft_memmove(dest, "con\0sec\0\0te\0tur", 10))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:36:12: error: comparison between pointer and integer ('char *' and 'int') [-Werror,-Wpointer-integer-compare]
-                if (dest != ft_memmove(dest, "con\0sec\0\0te\0tur", 10))
-                    ~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:42:15: error: implicit declaration of function 'ft_memmove' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (dest != ft_memmove(dest, src, 8))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:42:12: error: comparison between pointer and integer ('char *' and 'int') [-Werror,-Wpointer-integer-compare]
-                if (dest != ft_memmove(dest, src, 8))
-                    ~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:48:14: error: implicit declaration of function 'ft_memmove' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (src != ft_memmove(src, dest, 8))
-                           ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:48:11: error: comparison between pointer and integer ('char *' and 'int') [-Werror,-Wpointer-integer-compare]
-                if (src != ft_memmove(src, dest, 8))
-                    ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:54:14: error: implicit declaration of function 'ft_memmove' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (src != ft_memmove(src, dest, 0))
-                           ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memmove/main.c:54:11: error: comparison between pointer and integer ('char *' and 'int') [-Werror,-Wpointer-integer-compare]
-                if (src != ft_memmove(src, dest, 0))
-                    ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~
-10 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
 
 = ft_memchr.c ==================================================================
 $> norminette ft_memchr.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memchr.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:39:9: error: implicit declaration of function 'ft_memchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                str = ft_memchr("bonjour", 'b', 4);
-                      ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:39:9: note: did you mean 'ft_memcpy'?
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/../../../libft.h:27:7: note: 'ft_memcpy' declared here
-void    *ft_memcpy(void *dest, const void *src, size_t n);
-         ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:39:7: error: incompatible integer to pointer conversion assigning to 'const char *' from 'int' [-Werror,-Wint-conversion]
-                str = ft_memchr("bonjour", 'b', 4);
-                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:47:9: error: implicit declaration of function 'ft_memchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                str = ft_memchr("bonjour", 'o', 7);
-                      ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:47:7: error: incompatible integer to pointer conversion assigning to 'const char *' from 'int' [-Werror,-Wint-conversion]
-                str = ft_memchr("bonjour", 'o', 7);
-                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:55:9: error: implicit declaration of function 'ft_memchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                str = ft_memchr("bonjourno", 'n', 2);
-                      ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:55:7: error: incompatible integer to pointer conversion assigning to 'const char *' from 'int' [-Werror,-Wint-conversion]
-                str = ft_memchr("bonjourno", 'n', 2);
-                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:63:9: error: implicit declaration of function 'ft_memchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                str = ft_memchr("bonjour", 'j', 6);
-                      ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:63:7: error: incompatible integer to pointer conversion assigning to 'const char *' from 'int' [-Werror,-Wint-conversion]
-                str = ft_memchr("bonjour", 'j', 6);
-                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:71:9: error: implicit declaration of function 'ft_memchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                str = ft_memchr("bonjour", 's', 7);
-                      ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:71:7: error: incompatible integer to pointer conversion assigning to 'const char *' from 'int' [-Werror,-Wint-conversion]
-                str = ft_memchr("bonjour", 's', 7);
-                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:81:24: error: implicit declaration of function 'ft_memchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                printf("%s", (char *)ft_memchr(tab, -1, 7));
-                                     ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memchr/main.c:81:16: error: cast to 'char *' from smaller integer type 'int' [-Werror,-Wint-to-pointer-cast]
-                printf("%s", (char *)ft_memchr(tab, -1, 7));
-                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-12 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
 
 = ft_memcmp.c ==================================================================
 $> norminette ft_memcmp.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memcmp.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memcmp/main.c:36:19: error: implicit declaration of function 'ft_memcmp' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_memcmp("salut", "salut", 5));
-                                ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memcmp/main.c:36:19: note: did you mean 'ft_memcpy'?
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_memcmp/../../../libft.h:27:7: note: 'ft_memcpy' declared here
-void    *ft_memcpy(void *dest, const void *src, size_t n);
-         ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./user_exe 09
+$> diff -U 3 user_output_test09 test09.output
+
+Diff OK :D
 
 = ft_strlen.c ==================================================================
 $> norminette ft_strlen.c | grep -E '(Error|Warning)'
@@ -267,22 +290,34 @@ clang: error: no such file or directory: '/nfs/homes/ybarbot/1CURSUS-git/libft-p
 $> norminette ft_strlcpy.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strlcpy.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/main.c:41:19: error: implicit declaration of function 'ft_strlcpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_strlcpy(dest, "lorem", 15));
-                                ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/main.c:47:19: error: implicit declaration of function 'ft_strlcpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_strlcpy(dest, "", 15));
-                                ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/main.c:53:19: error: implicit declaration of function 'ft_strlcpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_strlcpy(dest, "lorem ipsum", 3));
-                                ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/main.c:59:19: error: implicit declaration of function 'ft_strlcpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_strlcpy(dest, "lorem ipsum dolor sit amet", 15));
-                                ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/main.c:65:19: error: implicit declaration of function 'ft_strlcpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_strlcpy(dest, "lorem ipsum dolor sit amet", 0));
-                                ^
-5 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+Binary files /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/user_output_test03 and /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/test03.output differ$
+
+Diff KO :(
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+Binary files /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/user_output_test04 and /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/test04.output differ$
+
+Diff KO :(
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+Binary files /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/user_output_test05 and /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcpy/test05.output differ$
+
+Diff KO :(
 
 = ft_strchr.c ==================================================================
 $> norminette ft_strchr.c | grep -E '(Error|Warning)'
@@ -323,59 +358,46 @@ Diff OK :D
 $> norminette ft_strrchr.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strrchr.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:39:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str2, 'b')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:39:15: note: did you mean 'ft_strchr'?
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/../../../libft.h:21:7: note: 'ft_strchr' declared here
-char    *ft_strchr(const char *s, int c);
-         ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:39:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str2, 'b')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:50:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str2, 'o')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:50:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str2, 'o')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:62:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str3, 'o')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:62:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str3, 'o')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:73:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str2, 'j')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:73:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str2, 'j')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:84:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str2, 's')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:84:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str2, 's')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:91:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str2, '\0')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:91:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str2, '\0')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:103:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str3, '\0')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:103:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str3, '\0')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~~
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:114:15: error: implicit declaration of function 'ft_strrchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(str = ft_strrchr(str2 + 2, 'b')))
-                            ^
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strrchr/main.c:114:13: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(str = ft_strrchr(str2 + 2, 'b')))
-                          ^ ~~~~~~~~~~~~~~~~~~~~~~~~~
-16 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
 
 = ft_strnstr.c =================================================================
 $> norminette ft_strnstr.c | grep -E '(Error|Warning)'
@@ -387,10 +409,61 @@ clang: error: no such file or directory: '/nfs/homes/ybarbot/1CURSUS-git/libft-p
 $> norminette ft_strncmp.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strncmp.c main.c libft.a -o user_exe
 
-/nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strncmp/main.c:36:19: error: implicit declaration of function 'ft_strncmp' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_print_result(ft_strncmp("salut", "salut", 5));
-                                ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./user_exe 09
+$> diff -U 3 user_output_test09 test09.output
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./user_exe 10
+$> diff -U 3 user_output_test10 test10.output
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./user_exe 11
+$> diff -U 3 user_output_test11 test11.output
+
+Diff OK :D
 
 = ft_atoi.c ====================================================================
 $> norminette ft_atoi.c | grep -E '(Error|Warning)'
