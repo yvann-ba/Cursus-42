@@ -6,12 +6,13 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 09:23:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/06 16:29:05 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:26:23 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,9 +30,10 @@ void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, unsigned long n);
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strrchr(const char *str, int c);
-int	ft_strncmp(const char *s1, const char *s2, unsigned long n);
+int		ft_strncmp(const char *s1, const char *s2, unsigned long n);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 #endif

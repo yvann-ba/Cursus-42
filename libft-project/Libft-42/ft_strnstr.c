@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 14:03:26 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/07 09:55:02 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/07 10:00:53 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/07 14:19:35 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"   
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	is_present;
 
-	j = 0;
+	if (little[0] == '\0' || len == 0)
+		return ((char *)big);
 	i = 0;
-
-	while (src[j])
-		j++;
-	if (size == 0)
-		return (j);
-	while ((i < size - 1) && (src[i] != '\0'))
+	while (big[i] && i < len)
 	{
-		dst[i] = src[i];
+		j = 0;
+		while (little[j])
+		{
+			if (little[j] != big[j + i])
+			{
+				is_present = 0;
+				break ;
+			}
+			is_present = 1;
+			j++;
+		}
+		if (is_present == 1)
+			return ((char *)big + i);
 		i++;
 	}
-	if (i < size)
-		dst[i] = '\0';
-	return (j);
+	return (0);
 }
