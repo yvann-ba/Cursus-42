@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 09:23:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/07 10:26:23 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/08 10:00:05 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strrchr(const char *str, int c);
 int		ft_strncmp(const char *s1, const char *s2, unsigned long n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+int		ft_atoi(const char *nptr);
+void	*ft_calloc(size_t nmemb, size_t size);
+
 
 #endif
