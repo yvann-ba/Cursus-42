@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:08:50 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/08 09:20:29 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:41:43 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	j;
 
 	if (size == 0)
-		return (0);
+		return (ft_strlen((char *)src));
 	i = 0;
 	while (dst[i])
 		i++;
@@ -36,5 +36,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	return (i + ft_strlen((char *)src));
 }
-
-

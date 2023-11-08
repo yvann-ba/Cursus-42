@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:03:26 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/07 09:55:02 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:13:47 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	j = 0;
 	i = 0;
-
 	while (src[j])
 		j++;
 	if (size == 0)
