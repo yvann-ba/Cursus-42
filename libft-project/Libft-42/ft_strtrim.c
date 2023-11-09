@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 08:12:08 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/09 09:35:27 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/09 10:08:41 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/09 10:25:51 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	char	*s2;
+	size_t	j;
+	char	*s_trim;
 
-	if (s == NULL)
-		return (NULL);
-	if (start > ft_strlen(s))
-	{
-		s2 = malloc(1 * sizeof(char));
-		if (s2 == NULL)
-			return (NULL);
-		s2[0] = '\0';
-		return (s2);
-	}
-	s2 = malloc((len + 1) * sizeof(char));
-	if (s2 == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	while (s1[i++])
 	{
-		s2[i] = s[start];
-		start++;
-		i++;
+		j = 0;
+		while (set[j++])
+		{
+			if (s1[i] = set[j])
+		}
 	}
-	s2[i] = '\0';
-	return (s2);
+}
+#include <stdio.h>
+int main()
+{
+	char const *s1 = "yvannlala";
+	char const *set = 'a';
+
+	printf("%s", ft_strtrim(s1, set));
 }
