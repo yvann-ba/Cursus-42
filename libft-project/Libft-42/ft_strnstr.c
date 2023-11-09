@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:00:53 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/08 08:42:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/09 15:00:38 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	is_present;
 
-	if (little[0] == '\0' || len == 0)
+	if (little[0] == '\0')
 		return ((char *)big);
 	i = 0;
 	while (big[i] && i < len)
@@ -38,5 +38,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			return ((char *)big + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
