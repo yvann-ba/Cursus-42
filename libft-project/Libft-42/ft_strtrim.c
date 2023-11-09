@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:08:41 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/09 10:25:51 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/09 15:08:56 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+/*#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -35,4 +35,4 @@ int main()
 	char const *set = 'a';
 
 	printf("%s", ft_strtrim(s1, set));
-}
+}*/
