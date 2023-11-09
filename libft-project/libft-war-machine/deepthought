@@ -1,17 +1,17 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-2D6.42angouleme.fr
-Linux 5.15.0-88-generic x86_64
+1H6.42angouleme.fr
+Linux 5.4.0-135-generic x86_64
 $> date
-Wed Nov  8 02:05:02 PM CET 2023
+Thu Nov  9 08:08:33 AM CET 2023
 $> gcc --version
-gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
-Copyright (C) 2021 Free Software Foundation, Inc.
+gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+Copyright (C) 2019 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 $> clang --version
-Ubuntu clang version 12.0.1-19ubuntu3
+Ubuntu clang version 12.0.0-3ubuntu1~20.04.5
 Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
@@ -56,7 +56,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r-- 1 ybarbot 2023_angouleme 27776 Nov  8 14:05 /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/dirlibft/libft.a
+-rw-r--r-- 1 ybarbot 2023_angouleme 36384 Nov  9 08:08 /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -327,7 +327,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcat/user_output_test07	2023-11-08 14:05:08.364462049 +0100$
+--- /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcat/user_output_test07	2023-11-09 08:08:38.988928412 +0100$
 +++ /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strlcat/test07.output	2023-11-07 09:03:03.565594584 +0100$
 @@ -0,0 +1,2 @@$
 +31$
@@ -508,7 +508,7 @@ Diff OK :D
 = Test 10 ==================================================
 $> ./user_exe 10
 $> diff -U 3 user_output_test10 test10.output
---- /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strnstr/user_output_test10	2023-11-08 14:05:10.792423503 +0100$
+--- /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strnstr/user_output_test10	2023-11-09 08:08:41.332890354 +0100$
 +++ /nfs/homes/ybarbot/1CURSUS-git/libft-project/libft-war-machine/tests/Part1_functions/ft_strnstr/test10.output	2023-11-07 09:03:03.685592600 +0100$
 @@ -1 +1 @@$
 -lorem ipsum dolor sit amet$
