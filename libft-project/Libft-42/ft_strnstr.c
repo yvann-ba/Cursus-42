@@ -6,7 +6,7 @@
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:00:53 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/09 15:13:13 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/09 15:54:28 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	is_present;
 
-	if (little[0] == '\0')
+	if ((big == NULL && len == 0) || little[0] == '\0' )
 		return ((char *)big);
 	i = 0;
 	while (big[i] && i < len)
@@ -35,7 +35,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			j++;
 		}
 		if (is_present == 1 && little[j] == '\0')
-			return ((char *)big + i);
+			return ((char *) (big + i));
 		i++;
 	}
 	return (NULL);
