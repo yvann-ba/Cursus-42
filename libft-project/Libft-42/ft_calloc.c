@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:54:15 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/10 11:09:08 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/10 13:05:29 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	full_size;
-	size_t size_max;
+	size_t	size_max;
 	void	*tab;
 
-	size_max = 0xFFFFFFFFFFFFFFFF;	
+	size_max = 0xFFFFFFFFFFFFFFFF;
 	if (nmemb == 0 || size == 0)
 	{
 		return (malloc(0));
