@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:08:50 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/08 14:41:43 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/10 11:26:40 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	j;
 
-	if (size == 0)
-		return (ft_strlen((char *)src));
+	if (size == 0 && dst == NULL)
+		return (0);
 	i = 0;
-	while (dst[i])
+	while (dst[i] && i < size)
 		i++;
-	if (size <= i)
-		return (size + ft_strlen((char *)src));
 	j = 0;
 	if (size > 0)
 	{
@@ -32,7 +30,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 			dst[i + j] = src[j];
 			j++;
 		}
-		dst[i + j] = '\0';
 	}
+	if (i < size)
+		dst[i + j] = '\0';
 	return (i + ft_strlen((char *)src));
 }

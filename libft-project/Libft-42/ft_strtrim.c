@@ -3,36 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:08:41 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/09 15:08:56 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/10 11:17:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "libft.h"
+#include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	i;
-	size_t	j;
-	char	*s_trim;
+// int	char_in_set(char c, char const *set)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (s1[i++])
-	{
-		j = 0;
-		while (set[j++])
-		{
-			if (s1[i] = set[j])
-		}
-	}
-}
-#include <stdio.h>
-int main()
-{
-	char const *s1 = "yvannlala";
-	char const *set = 'a';
+// 	i = 0;
+// 	while (set[i])
+// 	{
+// 		if (c == set[i])
+// 			return(1);
+// 	}
+// 	return (0);
+// }
 
-	printf("%s", ft_strtrim(s1, set));
-}*/
+// char	*ft_strtrim(char const *s1, char const *set)
+// {
+	
+// }
+

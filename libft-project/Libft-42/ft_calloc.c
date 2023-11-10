@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:54:15 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/09 15:00:09 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/10 11:09:08 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	size_max = 0xFFFFFFFFFFFFFFFF;	
 	if (nmemb == 0 || size == 0)
-    	nmemb = size = 1;
+	{
+		return (malloc(0));
+	}
 	if (size && nmemb > size_max / size)
 		return (NULL);
 	else
