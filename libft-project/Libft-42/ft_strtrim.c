@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:08:41 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/10 13:24:13 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/11 08:16:11 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,28 @@ int	ft_char_in_set(char c, char const *set)
 	return (0);
 }
 
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*s_trim;
 	size_t	start;
 	size_t	end;
-	size_t	i;
 
-	if (set == NULL || s1 == NULL)
+	if (!s1)
 		return (NULL);
+	if (!set || !*s1)
+		return (ft_strdup(s1));
 	start = 0;
 	while (s1[start] && ft_char_in_set(s1[start], set))
 		start++;
-	end = ft_strlen(s1) - 1;
-	while (s1[end] && ft_char_in_set(s1[end], set))
+	end = ft_strlen(s1);
+	while (end > start && ft_char_in_set(s1[end - 1], set))
 		end--;
 	if (end < start)
-		return (malloc(0));
+		return ("");
 	s_trim = malloc((end - start) + 1);
-	if (s_trim == NULL)
+	if (!s_trim)
 		return (NULL);
-	i = 0;
-	while (start <= end)
-	{
-		s_trim[i] = s1[start];
-		i++;
-		start++;
-	}
-	s_trim[i] = '\0';
+	ft_strlcpy(s_trim, &s1[start], end - start + 1);
+	s_trim[end - start] = '\0';
 	return (s_trim);
 }
-
