@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:27:17 by yvann             #+#    #+#             */
-/*   Updated: 2023/11/12 12:19:36 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:53:03 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ static char	*ft_rev_str_tab(char *str, size_t size)
 
 	i = 0;
 	tmp = 'a';
-
+	if (str[0] == '-')
+	{
+		i++;
+	}
 	while (i < size / 2)
 	{
 		tmp = str[i];
@@ -27,7 +30,6 @@ static char	*ft_rev_str_tab(char *str, size_t size)
 		str[size - i - 1] = tmp;
 		i++;
 	}
-	str[ft_strlen(str)] = '\0';
 	return (str);
 }
 
@@ -38,9 +40,15 @@ static char	*ft_malloc_str(int n)
 
 	i = 0;
 	if (n == 0)
-		i++;
+	{
+		str = ft_calloc(1, sizeof(char));
+		return (str);
+	}
 	if (n < 0)
+	{
 		n = n * (-1);
+		i++;
+	}
 	while (n > 0)
 	{
 		n = n / 10;
@@ -73,7 +81,11 @@ char	*ft_itoa(int n)
 		n = n / 10;
 		i++;
 	}
-	str = ft_rev_str_tab(str, ft_strlen(str));
+	str[i] = '\0';
+	if (str[0] == '-')
+		str = ft_rev_str_tab(str + 1, i - 1);
+	else
+		str = ft_rev_str_tab(str, i);
 	return (str);
 
 }

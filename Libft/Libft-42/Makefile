@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yvann <yvann@student.42.fr>                +#+  +:+       +#+         #
+#    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/11 14:27:36 by yvann            ###   ########.fr        #
+#    Updated: 2023/11/12 14:06:10 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ ft_strjoin.c \
 ft_strtrim.c \
 ft_split.c \
 ft_itoa.c \
+ft_strmapi.c \
+ft_striteri.c \
 
 OBJ = $(SRC:.c=.o)
 
