@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
+#    By: yvann <yvann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/12 14:06:10 by ybarbot          ###   ########.fr        #
+#    Updated: 2023/11/12 20:45:24 by yvann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,12 @@ ft_split.c \
 ft_itoa.c \
 ft_strmapi.c \
 ft_striteri.c \
+ft_putchar_fd.c \
+ft_putstr_fd.c \
+ft_putendl_fd.c \
+ft_putnbr_fd.c \
+
+BONUS = 
 
 OBJ = $(SRC:.c=.o)
 
