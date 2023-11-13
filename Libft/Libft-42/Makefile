@@ -3,16 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yvann <yvann@student.42.fr>                +#+  +:+       +#+         #
+#    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/12 20:45:24 by yvann            ###   ########.fr        #
+#    Updated: 2023/11/13 12:05:58 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror
+
 NAME = libft.a
+
 SRC = ft_isalnum.c \
 ft_isalpha.c \
 ft_isascii.c \
@@ -46,28 +49,43 @@ ft_striteri.c \
 ft_putchar_fd.c \
 ft_putstr_fd.c \
 ft_putendl_fd.c \
-ft_putnbr_fd.c \
+ft_putnbr_fd.c
 
-BONUS = 
+BONUS = ft_lstnew.c \
+ft_lstadd_front.c \
+ft_lstsize.c \
+ft_lstlast.c \
+ft_lstadd_back.c \
+ft_lstdelone.c \
+#ft_lstclear.c \
+ft_lstiter.c \
+ft_lstmap.c
 
-OBJ = $(SRC:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
+
+OBJ_BONUS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	
+$(NAME): $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SOURCES)
+	gcc -nostartfiles -shared -o libft.so $(OBJECTS)
+
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-	
-so: 
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) 
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
-	
+	$(CC) $(CFLAGS) -c $<
+
+bonus: $(OBJECT) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJECTS) $(OBJ_BONUS)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJECTS) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(OBJ_BONUS)
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re
