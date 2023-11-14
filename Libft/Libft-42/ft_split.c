@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 08:18:45 by yvann             #+#    #+#             */
-/*   Updated: 2023/11/13 10:48:42 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/14 17:13:09 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static char	*ft_strndup(const char *s, size_t n)
 {
-	char	*s2;
+	char	*str;
 
-	s2 = malloc(sizeof(char) * n + 1);
-	if (!s2)
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
 		return (NULL);
-	ft_strlcpy(s2, s, n + 1);
-	s2[n] = '\0';
-	return (s2);
+	ft_strlcpy(str, s, n + 1);
+	str[n] = '\0';
+	return (str);
 }
 
-static size_t	ft_count_words(char const *s, char c)
+static size_t	ft_count_words(const char *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -35,7 +35,7 @@ static size_t	ft_count_words(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		if (s[i] != '\0')
+		if (s[i])
 			count++;
 		while (s[i] && s[i] != c)
 			i++;
@@ -43,17 +43,25 @@ static size_t	ft_count_words(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+static void	ft_free_split(char **tab, size_t words)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < words)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+static char	**ft_split_words(char const *s, char c, char **tab)
 {
 	size_t	i;
 	size_t	j;
 	size_t	k;
-	char	**tab;
 
-	tab = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	//free si erreur
-	if (!tab || !s)
-		return (NULL);
 	i = 0;
 	k = 0;
 	while (s[i])
@@ -66,10 +74,28 @@ char	**ft_split(char const *s, char c)
 		if (i > j)
 		{
 			tab[k] = ft_strndup(s + j, i - j);
-			// if tab[k] == NULL free tout 
+			if (!tab[k])
+				return (NULL);
 			k++;
 		}
 	}
 	tab[k] = NULL;
+	return (tab);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+
+	if (!s)
+		return (NULL);
+	tab = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	if (!tab)
+		return (NULL);
+	if (!ft_split_words(s, c, tab))
+	{
+		ft_free_split(tab, ft_count_words(s, c));
+		return (NULL);
+	}
 	return (tab);
 }
