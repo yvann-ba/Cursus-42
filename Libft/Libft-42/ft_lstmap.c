@@ -6,10 +6,13 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:36:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/13 08:36:40 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/14 09:29:29 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	
+}

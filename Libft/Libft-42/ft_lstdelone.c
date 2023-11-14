@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:33:49 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/13 12:21:23 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/14 08:09:09 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (lst)
-		del(lst->content);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
 }

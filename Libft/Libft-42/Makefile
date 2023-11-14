@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/13 12:05:58 by ybarbot          ###   ########.fr        #
+#    Updated: 2023/11/14 11:12:52 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,11 @@ ft_lstsize.c \
 ft_lstlast.c \
 ft_lstadd_back.c \
 ft_lstdelone.c \
-#ft_lstclear.c \
+ft_lstclear.c \
 ft_lstiter.c \
 ft_lstmap.c
 
-OBJECTS = $(SOURCES:.c=.o)
+OBJECTS = $(SRC:.c=.o)
 
 OBJ_BONUS = $(BONUS:.c=.o)
 
@@ -71,8 +71,8 @@ $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SOURCES)
-	gcc -nostartfiles -shared -o libft.so $(OBJECTS)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) -c $(SRC) $(BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJECTS) $(OBJ_BONUS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
