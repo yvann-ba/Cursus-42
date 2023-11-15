@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yvann <yvann@student.42.fr>                +#+  +:+       +#+         #
+#    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2023/11/14 18:37:59 by yvann            ###   ########.fr        #
+#    Updated: 2023/11/15 08:32:52 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ft_substr.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
-ft_lstdelone.c ft_lstclear.c ft_lstmap.c
+ft_lstdelone.c ft_lstclear.c ft_lstmap.c ft_lstiter.c ft_lstlast.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -35,15 +35,8 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-	
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SOURCES)
-	gcc -nostartfiles -shared -o libft.so $(OBJECTS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $<
-
-bonus: $(OBJECT) $(OBJ_BONUS)
+bonus: $(OBJECTS) $(OBJ_BONUS)
 	ar rcs $(NAME) $(OBJECTS) $(OBJ_BONUS)
 
 clean:
