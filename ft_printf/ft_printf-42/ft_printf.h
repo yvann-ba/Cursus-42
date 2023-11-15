@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:10:34 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/15 11:12:09 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:24:53 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include "libft.h"
 
 #endif
