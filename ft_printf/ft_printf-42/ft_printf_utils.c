@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 11:10:34 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/16 16:41:32 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/16 15:33:43 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/16 15:41:12 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-int		ft_printf(const char *format, ...);
-void	ft_putnbr_base(int nbr, char *base);
-void	ft_putnbr_ubase(int nbr, char *base);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
+void	ft_putstr(char *str)
+{
+	size_t	i;
 
-
-#endif
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
