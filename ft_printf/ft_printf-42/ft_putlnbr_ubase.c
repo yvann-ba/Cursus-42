@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int static	ft_check_character_occurence(char *base)
+static int	ft_check_character_occurence(char *base)
 {
 	int		j;
 	int		i;
@@ -39,7 +39,7 @@ int static	ft_check_character_occurence(char *base)
 	return (1);
 }
 
-int	static	ft_check_parameters(char *base)
+static int	ft_check_parameters(char *base)
 {
 	int	i;
 
@@ -55,7 +55,7 @@ int	static	ft_check_parameters(char *base)
 	return (1);
 }
 
-void static	unsigned_nbr(unsigned int nbr, char *base)
+static int	unsigned_nbr(unsigned int nbr, char *base)
 {
 	unsigned int		i;
 	unsigned int		digit;
@@ -68,13 +68,16 @@ void static	unsigned_nbr(unsigned int nbr, char *base)
 	if (nbr)
 		unsigned_nbr(nbr, base);
 	write(1, &base[digit], 1);
-
 }
 
-void	ft_putlnbr_ubase(unsigned int nbr, char *base)
+unsigned ft_putlnbr_ubase(unsigned int nbr, char *base)
 {
+	unsigned counter;
+
+	counter = 0;
 	if (ft_check_parameters(base) && ft_check_character_occurence(base))
 	{
-		unsigned_nbr(nbr, base);
+		counter = unsigned_nbr(nbr, base);
 	}
+	return (counter);
 }

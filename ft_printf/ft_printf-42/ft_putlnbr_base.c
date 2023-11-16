@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putlnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putlnbr_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 10:03:56 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/16 10:35:04 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/16 21:26:56 by yvann             #+#    #+#             */
+/*   Updated: 2023/11/16 21:53:25 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int static	ft_check_character_occurence(char *base)
+static int	ft_check_character_occurence(char *base)
 {
 	int		j;
 	int		i;
@@ -41,7 +41,7 @@ int static	ft_check_character_occurence(char *base)
 	return (1);
 }
 
-int	static	ft_check_parameters(char *base)
+static int	ft_check_parameters(char *base)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ int	static	ft_check_parameters(char *base)
 	return (1);
 }
 
-int static	ft_unsigned_nbr(unsigned int nbr, char *base)
+static int	ft_unsigned_nbr(unsigned int nbr, char *base)
 {
 	int		i;
 	int		digit;
@@ -70,7 +70,6 @@ int static	ft_unsigned_nbr(unsigned int nbr, char *base)
 	if (nbr)
 		ft_unsigned_nbr(nbr, base);
 	write(1, &base[digit], 1);
-
 }
 
 int	ft_putlnbr_base(int nbr, char *base)
