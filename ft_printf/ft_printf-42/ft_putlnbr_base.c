@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putlnbr_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 21:26:56 by yvann             #+#    #+#             */
-/*   Updated: 2023/11/16 21:53:25 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/20 09:04:27 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,18 @@ static int	ft_unsigned_nbr(unsigned int nbr, char *base)
 {
 	int		i;
 	int		digit;
+	int		counter;
 
 	i = 0;
+	counter = 0;
 	while (base[i])
 		i++;
-	digit = nbr / i;
+	digit = nbr % i;
 	nbr = nbr / i;
 	if (nbr)
-		ft_unsigned_nbr(nbr, base);
+		counter += ft_unsigned_nbr(nbr, base);
 	write(1, &base[digit], 1);
+	return (counter);
 }
 
 int	ft_putlnbr_base(int nbr, char *base)

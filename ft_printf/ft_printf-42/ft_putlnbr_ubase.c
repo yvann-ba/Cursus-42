@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putlnbr_ubase.c                                  :+:      :+:    :+:   */
+/*   ft_putlnbr_ubase.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 16:08:24 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/16 16:14:01 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/20 09:12:52 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/20 09:32:00 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 static int	ft_check_character_occurence(char *base)
 {
@@ -57,27 +59,29 @@ static int	ft_check_parameters(char *base)
 
 static int	unsigned_nbr(unsigned int nbr, char *base)
 {
-	unsigned int		i;
-	unsigned int		digit;
+	unsigned int	i;
+	unsigned int	digit;
+	unsigned int	counter;
+
 
 	i = 0;
+	counter = 0;
 	while (base[i])
 		i++;
-	digit = nbr / i;
+	digit = nbr % i;
 	nbr = nbr / i;
 	if (nbr)
-		unsigned_nbr(nbr, base);
+		counter += unsigned_nbr(nbr, base);
 	write(1, &base[digit], 1);
+	return (counter);
 }
 
-unsigned ft_putlnbr_ubase(unsigned int nbr, char *base)
+unsigned int	ft_putlnbr_ubase(unsigned int nbr, char *base)
 {
-	unsigned counter;
+	unsigned int	counter;
 
 	counter = 0;
 	if (ft_check_parameters(base) && ft_check_character_occurence(base))
-	{
-		counter = unsigned_nbr(nbr, base);
-	}
+		counter += unsigned_nbr(nbr, base);
 	return (counter);
 }
