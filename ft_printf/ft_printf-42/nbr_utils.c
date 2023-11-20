@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putlnbr_base.c                                  :+:      :+:    :+:   */
+/*   nbr_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 21:26:56 by yvann             #+#    #+#             */
-/*   Updated: 2023/11/20 09:04:27 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/20 16:31:04 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_check_character_occurence(char *base)
+int	ft_check_character_occurence(char *base)
 {
 	int		j;
 	int		i;
@@ -41,7 +41,7 @@ static int	ft_check_character_occurence(char *base)
 	return (1);
 }
 
-static int	ft_check_parameters(char *base)
+int	ft_check_parameters(char *base)
 {
 	int	i;
 
@@ -59,9 +59,9 @@ static int	ft_check_parameters(char *base)
 
 static int	ft_unsigned_nbr(unsigned int nbr, char *base)
 {
-	int		i;
-	int		digit;
-	int		counter;
+	unsigned int	i;
+	unsigned int	digit;
+	unsigned int	counter;
 
 	i = 0;
 	counter = 0;
@@ -72,6 +72,7 @@ static int	ft_unsigned_nbr(unsigned int nbr, char *base)
 	if (nbr)
 		counter += ft_unsigned_nbr(nbr, base);
 	write(1, &base[digit], 1);
+	counter++;
 	return (counter);
 }
 
@@ -93,5 +94,15 @@ int	ft_putlnbr_base(int nbr, char *base)
 			p = nbr;
 		counter += ft_unsigned_nbr(p, base);
 	}
+	return (counter);
+}
+
+unsigned int	ft_putlnbr_ubase(unsigned int nbr, char *base)
+{
+	unsigned int	counter;
+
+	counter = 0;
+	if (ft_check_parameters(base) && ft_check_character_occurence(base))
+		counter += ft_unsigned_nbr(nbr, base);
 	return (counter);
 }
