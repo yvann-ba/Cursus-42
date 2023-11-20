@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:09:51 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/20 16:30:23 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/20 16:42:55 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	ft_printf(const char *format, ...)
 			format++;
 		}
 	}
+	va_end(args);
 	return (i);
 }
