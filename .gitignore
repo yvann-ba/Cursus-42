@@ -5,3 +5,4 @@ Libft/run_tests.sh
 
 ft_printf/ft_printf-42/printfTester/
 
+get_next_line/gnlTester
