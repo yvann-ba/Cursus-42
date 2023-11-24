@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:09:56 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/23 14:06:54 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/24 14:30:26 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,28 @@ char	*ft_strchr(const char *str, int c)
 		i++;
 	}
 	return (0);
+}
+
+char *ft_strldup(const char *s, size_t len)
+{
+    size_t	i;
+	size_t	j;
+    char	*s2;
+
+    i = 0;
+    while (s[i] && i < len)
+        i++;
+    s2 = malloc(i + 1);
+    if (s2 == NULL)
+        return (NULL);
+
+	j = 0;
+	while (j < i)
+	{
+		s2[j] = s[j];
+		j++;
+	}
+    s2[i] = '\0';
+
+    return s2;
 }
