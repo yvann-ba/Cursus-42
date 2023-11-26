@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:08:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/24 14:22:31 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/26 10:30:35 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*handle_line(char **backup, char *buf)
 {
-	char *line_end;
-	char *line;
-	char *new_backup;
-	size_t len;
-	
+	char	*line_end;
+	char	*line;
+	char	*new_backup;
+	size_t	len;
+
 	line_end = ft_strchr(buf, '\n');
 	if (line_end != NULL)
 	{
 		len = line_end - buf;
-		line = ft_strldup(buf, len);
+		line = ft_strndup(buf, len);
 		new_backup = ft_strdup(line_end + 1);
 		free (*backup);
 		*backup = new_backup;
@@ -51,7 +51,6 @@ char	*get_next_line(int fd)
 	buf = malloc (BUFFER_SIZE + 1);
 	if (buf == NULL)
 		return (NULL);
-	line = NULL;
 	while ((bytes_read = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[bytes_read] = '\0';
@@ -64,27 +63,36 @@ char	*get_next_line(int fd)
 		else
 			backup = ft_strdup(buf);
 		if (ft_strchr(buf, '\n'))
-			break;
+			break ;
 	}
+	free(buf);
 	if (bytes_read < 0)
+		return (NULL);
+	if (bytes_read == 0 && (!backup || *backup == '\0'))
 	{
-		free(buf);
+		free(backup);
+		backup = NULL;
 		return (NULL);
 	}
-	line = handle_line(&backup, backup);
-	
-	free(buf);
-	return (line);
+	return (handle_line(&backup, backup));
 }
+
 #include <fcntl.h>
 #include <stdio.h>
 int main(int argc, char **argv)
 {
 	int fd;
 	char *line;
-	void(argc);
-	fd = open(argv[1], O_RDONLY);
-	printf("%s", get_next_line(fd));
 
-	close(fd);
+	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		while ((line = get_next_line(fd)) != NULL)
+		{
+			printf("%s\n", line);
+			free(line);
+		}
+
+		close(fd);
+	}
 }

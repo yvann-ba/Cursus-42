@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:09:56 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/24 14:30:26 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/26 10:00:40 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,29 +56,48 @@ char	*ft_strchr(const char *str, int c)
 			return ((char *)&str[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
 
-char *ft_strldup(const char *s, size_t len)
+char	*ft_strndup(char *s, size_t len)
 {
-    size_t	i;
+	size_t	i;
 	size_t	j;
-    char	*s2;
+	char	*s2;
 
-    i = 0;
-    while (s[i] && i < len)
-        i++;
-    s2 = malloc(i + 1);
-    if (s2 == NULL)
-        return (NULL);
-
+	i = 0;
+	while (s[i] && i < len)
+		i++;
+	s2 = malloc(i + 1);
+	if (s2 == NULL)
+		return (NULL);
 	j = 0;
 	while (j < i)
 	{
 		s2[j] = s[j];
 		j++;
 	}
-    s2[i] = '\0';
+	s2[i] = '\0';
+	return (s2);
+}
 
-    return s2;
+char	*ft_strdup(char *s)
+{
+	size_t	i;
+	char	*s2;
+
+	i = 0;
+	while (s[i])
+		i++;
+	s2 = malloc(i + 1);
+	if (s2 == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		s2[i] = s[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }
