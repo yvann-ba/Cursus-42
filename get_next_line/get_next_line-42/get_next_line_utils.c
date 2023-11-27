@@ -3,23 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:09:56 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/26 10:00:40 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/27 08:10:05 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char const *str)
+char	*handle_line(char **backup)
 {
-	size_t	i;
+	char	*line_end;
+	char	*line;
+	char	*new_backup;
+	size_t	len;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	line_end = ft_strchr(*backup, '\n');
+	if (line_end != NULL)
+	{
+		len = line_end - *backup + 1;
+		line = ft_strndup(*backup, len);
+		new_backup = ft_strdup(line_end + 1);
+		free(*backup);
+		*backup = new_backup;
+	}
+	else
+	{
+		line = ft_strdup(*backup);
+		free(*backup);
+		*backup = NULL;
+	}
+	return (line);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -30,7 +45,13 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	full_s = malloc (((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
+	i = 0;
+	while (s1[i])
+		i++;
+	j = 0;
+	while (s2[j])
+		j++;
+	full_s = malloc ((i + j + 1) * sizeof(char));
 	if (full_s == NULL)
 		return (NULL);
 	i = -1;
@@ -50,12 +71,14 @@ char	*ft_strchr(const char *str, int c)
 	if (str == NULL)
 		return (NULL);
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if ((unsigned char)str[i] == (unsigned char)c)
 			return ((char *)&str[i]);
 		i++;
 	}
+	if ((unsigned char)c == '\0')
+		return ((char *)&str[i]);
 	return (NULL);
 }
 
