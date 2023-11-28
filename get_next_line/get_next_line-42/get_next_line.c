@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:08:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/28 11:15:36 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/28 13:11:33 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h>
 int main(int argc, char **argv)
 {
@@ -107,4 +107,4 @@ int main(int argc, char **argv)
 
 		close(fd);
 	}
-}
+}*/
