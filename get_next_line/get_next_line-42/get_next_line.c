@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:08:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/28 09:41:35 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/28 11:15:36 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*#include <fcntl.h>
+#include <fcntl.h>
 #include <stdio.h>
 int main(int argc, char **argv)
 {
@@ -99,10 +99,12 @@ int main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		while ((line = get_next_line(fd)) != NULL)
 		{
-			printf("%s1\n", line);
+			printf("line : %s", line);
 			free(line);
 		}
+		//line = get_next_line(fd);
+		//printf("%s", line);
 
 		close(fd);
 	}
-}*/
+}
