@@ -6,7 +6,7 @@
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:08:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/27 08:23:02 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/28 09:41:35 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*read_from_fd(int fd, char **backup)
 		return (NULL);
 	bytes_read = read_loop(fd, backup, buf);
 	free(buf);
-	if (bytes_read < 0 || (bytes_read == 0 && !*backup))
+	if (bytes_read <= 0 && (!*backup || **backup == '\0'))
 		return (NULL);
 	return (*backup);
 }
@@ -77,7 +77,12 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!read_from_fd(fd, &backup))
-		return (NULL);
+	{
+		if (!backup)
+			return (NULL);
+		line = handle_line(&backup);
+		return (line);
+	}
 	line = handle_line(&backup);
 	return (line);
 }
