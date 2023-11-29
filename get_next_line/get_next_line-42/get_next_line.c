@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:08:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/28 13:11:33 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/29 09:32:44 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*init_buffer(void)
+char	*create_new_line(char **backup)
 {
-	char	*buf;
+	char	*line_end;
+	char	*line;
 
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (NULL);
-	return (buf);
+	line_end = ft_strchr(*backup, '\n');
+	if (line_end != NULL)
+	{
+		line = ft_strndup(*backup, line_end - *backup + 1);
+	}
+	else
+	{
+		line = ft_strdup(*backup);
+	}
+	return (line);
 }
 
 int	update_backup(char **backup, char *buf)
@@ -59,7 +66,7 @@ char	*read_from_fd(int fd, char **backup)
 	char	*buf;
 	int		bytes_read;
 
-	buf = init_buffer();
+	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
 	bytes_read = read_loop(fd, backup, buf);

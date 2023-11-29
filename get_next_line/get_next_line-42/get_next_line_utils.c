@@ -3,47 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:09:56 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/28 13:22:53 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/11/29 09:31:25 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *handle_line(char **backup)
+char	*handle_line(char **backup)
 {
-    char *line_end;
-    char *line;
-    char *new_backup;
+	char	*line;
+	char	*line_end;
+	char	*new_backup;
 
-    line_end = ft_strchr(*backup, '\n');
-    if (line_end != NULL) 
+	line = create_new_line(backup);
+	line_end = ft_strchr(*backup, '\n');
+	if (line_end != NULL && *(line_end + 1) != '\0')
 	{
-        line = ft_strndup(*backup, line_end - *backup + 1);
-
-        if (*(line_end + 1) == '\0')
-		{
-            free(*backup);
-            *backup = NULL;
-        }
-		else
-		{
-            new_backup = ft_strdup(line_end + 1);
-            free(*backup);
-            *backup = new_backup;
-        }
-    }
+		new_backup = ft_strdup(line_end + 1);
+		free(*backup);
+		*backup = new_backup;
+	}
 	else
 	{
-        line = ft_strdup(*backup);
-        free(*backup);
-        *backup = NULL;
-    }
-    return (line);
+		free(*backup);
+		*backup = NULL;
+	}
+	return (line);
 }
-
 
 char	*ft_strjoin(char *s1, char *s2)
 {

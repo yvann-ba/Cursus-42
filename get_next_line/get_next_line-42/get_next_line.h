@@ -6,7 +6,7 @@
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:08:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/27 08:25:13 by yvann            ###   ########.fr       */
+/*   Updated: 2023/11/29 09:33:05 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 10
 # endif
 
 # include <stdlib.h>
@@ -26,5 +26,6 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strndup(char *s, size_t len);
 char	*ft_strdup(char *s);
 char	*handle_line(char **backup);
+char	*create_new_line(char **backup);
 
 #endif
