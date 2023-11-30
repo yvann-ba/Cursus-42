@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 10:08:07 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/30 21:49:58 by yvann            ###   ########.fr       */
+/*   Created: 2023/11/29 18:02:13 by yvann             #+#    #+#             */
+/*   Updated: 2023/11/30 21:34:54 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,18 @@ char	*read_from_fd(int fd, char **backup)
 
 char	*get_next_line(int fd)
 {
-	static char	*backup;
+	static char	*backup[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!read_from_fd(fd, &backup))
+	if (!read_from_fd(fd, &backup[fd]))
 	{
-		if (!backup)
+		if (!backup[fd])
 			return (NULL);
-		line = handle_line(&backup);
+		line = handle_line(&backup[fd]);
 		return (line);
 	}
-	line = handle_line(&backup);
+	line = handle_line(&backup[fd]);
 	return (line);
 }
