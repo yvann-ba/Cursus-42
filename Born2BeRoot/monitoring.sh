@@ -13,7 +13,7 @@ disk_total=$(df -BG | grep '^/dev/' | grep -v '/boot$' | awk '{total += $2} END 
 disk_used=$(df -BM | grep '^/dev/' | grep -v '/boot$' | awk '{used += $3} END {print used}')
 disk_usage_percent=$(df -BM | grep '^/dev/' | grep -v '/boot$' | awk '{used += $3} {total+= $2} END {printf("%d", used/total*100)}')
 
-cpu_load=$(vmstat 1 2 | tail -1 | awk '{printf("%.1f%%", 100-$15)}')
+cpu_load=$(mpstat | grep all | awk '{print 100 - $13}')
 
 last_boot=$(who -b | awk '$1 == "system" {print $3 " " $4}')
 
@@ -34,7 +34,7 @@ sudo_commands=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
   echo "vCPU: $cpu_virtual"
   echo "Memory Usage: $mem_used/${mem_total}MB ($mem_usage_percent%)"
   echo "Disk Usage: $disk_used/${disk_total}GB ($disk_usage_percent%)"
-  echo "CPU Load: $cpu_load"
+  echo "CPU Load: $cpu_load%"
   echo "Last Boot: $last_boot"
   echo "LVM in use: $lvm_check"
   echo "TCP Connections: $tcp_connections ESTABLISHED"
@@ -42,3 +42,4 @@ sudo_commands=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
   echo "Network: IP $network_ip, MAC $network_mac"
   echo "Sudo Commands Executed: $sudo_commands"
 } | wall
+
