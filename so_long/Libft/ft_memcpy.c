@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 10:08:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/12/14 10:19:15 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/06 11:02:25 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/06 13:13:04 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
 
-# include <stdlib.h>
-# include <unistd.h>
-
-char	*get_next_line(int fd);
-char	*handle_line(char **backup);
-char	*create_new_line(char **backup);
-
-#endif
+	if (n == 0)
+		return (dest);
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dest);
+}

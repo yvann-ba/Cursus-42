@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 10:08:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/12/14 10:19:15 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/08 08:54:15 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/10 13:05:29 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	size_t	full_size;
+	size_t	size_max;
+	void	*tab;
 
-# include <stdlib.h>
-# include <unistd.h>
-
-char	*get_next_line(int fd);
-char	*handle_line(char **backup);
-char	*create_new_line(char **backup);
-
-#endif
+	size_max = 0xFFFFFFFFFFFFFFFF;
+	if (nmemb == 0 || size == 0)
+	{
+		return (malloc(0));
+	}
+	if (size && nmemb > size_max / size)
+		return (NULL);
+	else
+		full_size = nmemb * size;
+	tab = malloc(full_size);
+	if (tab == NULL)
+		return (NULL);
+	ft_bzero(tab, full_size);
+	return (tab);
+}

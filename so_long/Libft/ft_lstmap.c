@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 08:54:25 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/08 13:06:34 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/13 08:36:07 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/15 07:58:10 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	char	*s2;
+	t_list	*new_lst;
+	t_list	*new_node;
 
-	if (s == NULL)
-		return (NULL);
-	s2 = malloc((ft_strlen((char *)s) + 1) * sizeof(char));
-	if (s2 == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	if (!lst || !f || !del)
+		return (0);
+	new_lst = ft_lstnew(f(lst->content));
+	if (!new_lst)
+		return (0);
+	lst = lst->next;
+	while (lst)
 	{
-		s2[i] = s[i];
-		i++;
+		new_node = ft_lstnew(f(lst->content));
+		if (!new_node)
+		{
+			ft_lstclear(&new_lst, del);
+			return (0);
+		}
+		ft_lstadd_back(&new_lst, new_node);
+		lst = lst->next;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (new_lst);
 }
