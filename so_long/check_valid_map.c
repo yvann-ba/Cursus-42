@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsingmap.c                                       :+:      :+:    :+:   */
+/*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/14 14:12:42 by yvann            ###   ########.fr       */
+/*   Updated: 2023/12/15 13:29:42 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "Libft/libft.h"
+#include "so_long.h"
 
 int	count_elements(char **map, int height, int width, char element)
 {
