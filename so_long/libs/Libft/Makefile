@@ -28,27 +28,22 @@ ft_printf/ft_printf.c ft_printf/ft_putlnbr_ulongbase.c \
 ft_printf/nbr_utils.c ft_printf/printf_utils.c \
 \
 get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-
-BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
+\
+ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
 ft_lstdelone.c ft_lstclear.c ft_lstmap.c ft_lstiter.c ft_lstlast.c
 
 OBJECTS = $(SOURCES:.c=.o)
-
-OBJ_BONUS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
-bonus: $(OBJECTS) $(OBJ_BONUS)
-	ar rcs $(NAME) $(OBJECTS) $(OBJ_BONUS)
-
 clean:
-	rm -f $(OBJECTS) $(OBJ_BONUS)
+	rm -f $(OBJECTS)
 
 fclean: clean
-	rm -f $(NAME) $(OBJ_BONUS)
+	rm -f $(NAME)
 
 re: fclean all
 

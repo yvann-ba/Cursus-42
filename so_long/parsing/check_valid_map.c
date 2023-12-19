@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	count_elements(char **map, int height, int width, char element)
+static int	count_elements(char **map, int height, int width, char element)
 {
 	int	count;
 	int	y;

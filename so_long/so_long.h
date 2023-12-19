@@ -15,10 +15,18 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "Libft/libft.h"
+# include "libs/Libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
 
+typedef struct s_dimensions
+{
+    int width;
+    int height;
+} t_dimensions;
+
 void	free_map(char **map, int height);
+int	is_map_valid(char **map, int height, int width);
+
 
 #endif

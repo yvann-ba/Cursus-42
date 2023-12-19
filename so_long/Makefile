@@ -12,25 +12,25 @@
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-NAME = so_long
+NAME = so_long.a
 
-SRCS = 
+SRCS = parsing/map_utils.c parsing/get_map.c parsing/check_valid_map.c
 OBJS = $(SRCS:.c=.o)
 
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_FLAGS = -Llibs/mlx -lmlx -L/usr/lib/X11 -lXext -lX11
 
-INCLUDES = -I/usr/include -Imlx -Ilibft
-
-LIBFT = libft/libft.a
+LIBFT_DIR = libs/Libft
+LIBFT = $(LIBFT_DIR)/libft.a
+INCLUDES = -I/usr/include -Imlx -I$(LIBFT_DIR)/includes
 
 .PHONY: all clean fclean re libft
 
 all: $(NAME)
 
 libft:
-	$(MAKE) -C libft
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS) libft
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
@@ -40,10 +40,10 @@ $(NAME): $(OBJS) libft
 
 clean:
 	rm -f $(OBJS)
-	$(MAKE) -C libft clean
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C libft fclean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
