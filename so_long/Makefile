@@ -14,7 +14,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-NAME = so_long.a
+NAME = so_long
 
 SRCS = parsing/map_utils.c parsing/get_map.c parsing/check_valid_map.c
 OBJS = $(SRCS:.c=.o)

@@ -16,9 +16,12 @@ t_dimensions calculate_dimensions(int fd)
 {
     t_dimensions dim = {0, 0};
     char ch;
-    int w = 0;
+    int w;
+    int res;
 
-    while (read(fd, &ch, 1) > 0)
+    w = 0;
+    res = read(fd, &ch, 1);
+    while (res > 0)
     {
         if (ch == '\n')
         {
