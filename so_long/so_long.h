@@ -6,7 +6,7 @@
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/15 13:30:42 by yvann            ###   ########.fr       */
+/*   Updated: 2023/12/21 14:39:47 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 
 typedef struct s_dimensions
 {
-    int width;
-    int height;
-} t_dimensions;
+	int	width;
+	int	height;
+}	t_dimensions;
 
+int		return_error(char *message);
 void	free_map(char **map, int height);
-int	is_map_valid(char **map, int height, int width);
-
+int		get_map(int argc, char **argv);
+int		is_map_valid(char **map, int height, int width);
 
 #endif

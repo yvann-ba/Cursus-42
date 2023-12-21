@@ -6,152 +6,86 @@
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/15 13:29:58 by yvann            ###   ########.fr       */
+/*   Updated: 2023/12/21 14:37:45 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_dimensions calculate_dimensions(int fd)
+static int	check_file_extension(char *file)
 {
-    t_dimensions dim = {0, 0};
-    char ch;
-    int w;
-    int res;
+	int	len;
 
-    w = 0;
-    res = read(fd, &ch, 1);
-    while (res > 0)
-    {
-        if (ch == '\n')
-        {
-            dim.height++;
-            if (w > dim.width)
-                dim.width = w;
-            w = 0;
-        }
-        else
-            w++;
-    }
-    return dim;
+	len = ft_strlen(file);
+	if (len < 5)
+		return (1);
+	if (ft_strncmp(file + len - 4, ".ber", 4) != 0)
+		return (1);
+	return (0);
 }
 
-int	fill_map(int fd, char **map, int height, int width)
+static char	*read_file_to_buffer(int fd)
 {
-	char	ch;
-	int		x;
-	int		y;
-	int		res;
+	char	*line;
+	char	*buf;
+	char	*tmp;
 
-	x = 0;
-	y = 0;
-	res = read(fd, &ch, 1);
-	while ((res) > 0 && y < height)
+	buf = ft_calloc(1, 1);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		if (ch == '\n')
-		{
-			map[y][x] = '\0';
-			y++;
-			x = 0;
-		}
-		else if (x < width)
-		{
-			map[y][x] = ch;
-			x++;
-		}
-	}
-	return (res >= 0);
-}
-
-
-char	**allocate_map(int height, int width)
-{
-	char	**map;
-	int		i;
-
-	map = malloc(sizeof(char *) * height);
-	if (!map)
-		return (NULL);
-	i = 0;
-	while (i < height)
-	{
-		map[i] = malloc(sizeof(char) * (width + 1));
-		if (!map[i])
-		{
-			while (i--)
-				free(map[i]);
-			free(map);
+		tmp = ft_strjoin(buf, line);
+		free(buf);
+		free(line);
+		buf = tmp;
+		line = get_next_line(fd);
+		if (buf == NULL)
 			return (NULL);
-		}
+	}
+	return (buf);
+}
+
+static void	get_dimensions(char **map, t_dimensions *dim)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+			j++;
 		i++;
 	}
-	return (map);
+	dim->height = i;
+	dim->width = j;
 }
 
-static char **open_and_create_map(const char *file_path, t_dimensions *dim)
+int	get_map(int argc, char **argv)
 {
-    int fd;
-    char **map;
+	char			**map;
+	t_dimensions	dim;
+	int				fd;
+	char			*buf;
 
-    fd = open(file_path, O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Error opening file");
-        return (NULL);
-    }
-    *dim = calculate_dimensions(fd);
-    close(fd);
-    map = allocate_map(dim->height, dim->width);
-    return (map);
-}
-
-
-char **read_map_from_file(const char *file_path, t_dimensions *dim)
-{
-    int fd;
-    char **map;
-
-    map = open_and_create_map(file_path, dim);
-    if (!map)
-        return (NULL);
-
-    fd = open(file_path, O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Error reopening file");
-        free_map(map, dim->height); 
-        return (NULL);
-    }
-    if (!fill_map(fd, map, dim->height, dim->width)) 
+	if (argc != 2)
+		return (return_error("Invalid number of arguments"));
+	else
 	{
-        close(fd);
-        free_map(map, dim->height); 
-        return (NULL);
-    }
-    close(fd);
-    return (map);
-}
-
-int main(int argc, char **argv)
-{
-    if (argc != 2)
-    {
-        write(2, "Usage: ./so_long map_file.ber\n", 31);
-        return (1);
-    }
-
-    t_dimensions dim;
-    char **map = read_map_from_file(argv[1], &dim);
-    if (!map)
-    {
-        return (1);
-    }
-    if (is_map_valid(map, dim.height, dim.width) == 0)
-        ft_printf("map valid");
-    else
-        ft_printf("map not valid");
-
-    free_map(map, dim.height);
-
-    return (0);
+		if (check_file_extension(argv[1]) == 1)
+			return (return_error("Invalid file extension"));
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+			return (return_error("Failed to open file"));
+		buf = read_file_to_buffer(fd);
+		map = ft_split(buf, '\n');
+		free(buf);
+		get_dimensions(map, &dim);
+		if (is_map_valid(map, dim.height, dim.width) == 0)
+			ft_printf("map valid");
+		else
+			return (return_error("Invalid map"));
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/15 13:29:42 by yvann            ###   ########.fr       */
+/*   Updated: 2023/12/21 12:31:00 by yvann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,9 @@ int	is_map_valid(char **map, int height, int width)
 	if (count_elements(map, height, width, 'E') != 1 \
 	|| count_elements(map, height, width, 'C') < 1 \
 	|| count_elements(map, height, width, 'P') != 1)
-	{
-		ft_printf("Error\nInvalid map: incorrect E, C or P\n");
-		return (1);
-	}
+		return (return_error("Invalid map: Missing or too many elements"));
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
-	{
-		ft_printf("Error\nInvalid map: Missing walls\n");
-		return (1);
-	}
+		return (return_error("Invalid map: Missing walls"));
 	return (0);
 }
-
-
-
