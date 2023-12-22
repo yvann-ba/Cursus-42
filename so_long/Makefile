@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yvann <yvann@student.42.fr>                +#+  +:+       +#+         #
+#    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 12:39:25 by ybarbot           #+#    #+#              #
-#    Updated: 2023/12/21 14:23:34 by yvann            ###   ########.fr        #
+#    Updated: 2023/12/22 09:13:38 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-NAME = so_long
 
-SRCS = parsing/map_utils.c parsing/get_map.c parsing/check_valid_map.c parsing/test_get_map.c
+SRCS = parsing/map_utils.c parsing/get_map.c parsing/check_valid_map.c
 OBJS = $(SRCS:.c=.o)
 
+NAME = so_long
 MLX_DIR = libs/mlx
 MLX = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11

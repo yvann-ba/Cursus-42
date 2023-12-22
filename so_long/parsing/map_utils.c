@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/21 14:39:32 by yvann            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:08:52 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	return_error(char *message)
 {
 	ft_printf("Error : %s\n", message);
 	return (1);
+}
+
+void	*return_error_null(char *message)
+{
+	ft_printf("Error : %s\n", message);
+	return (NULL);
 }
 
 void	free_map(char **map, int height)
