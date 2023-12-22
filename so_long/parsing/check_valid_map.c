@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/22 11:15:21 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/12/22 13:01:28 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,12 @@ static int	check_side_walls(char **map, int height, int width)
 
 int	is_map_valid(char **map, int height, int width)
 {
+	if (height < 3 || width < 3)
+		return (return_error("Invalid map: Too small"));
+	if (height == width)
+		return (return_error("Invalid map: The map must be rectangular"));
+	if (check_elements(map, height, width) == 1)
+		return (return_error("Invalid map: Invalid element"));
 	if (count_elements(map, height, width, 'E') != 1 \
 	|| count_elements(map, height, width, 'C') < 1 \
 	|| count_elements(map, height, width, 'P') != 1)
@@ -91,9 +97,5 @@ int	is_map_valid(char **map, int height, int width)
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
 		return (return_error("Invalid map: Missing walls"));
-	if (height < 3 || width < 3)
-		return (return_error("Invalid map: Too small"));
-	if (height == width)
-		return (return_error("Invalid map: The map must be rectangular"));
 	return (0);
 }

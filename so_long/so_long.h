@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/22 11:11:32 by ybarbot          ###   ########.fr       */
+/*   Updated: 2023/12/22 13:47:19 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,27 @@ typedef struct s_dimensions
 	int	height;
 }	t_dimensions;
 
-typedef struct	s_data {
+typedef struct s_sprite
+{
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	int		width = 50;
+	int		height = 50;
+}	t_sprite;
+
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	t_sprite	player;
+	t_sprite	wall;
+	t_sprite	empty;
+	t_sprite	collectible;
+	t_sprite	exit;
+	char		**map;
+	int			width;
+	int			height;
+	void		*img;
+}	t_game;
 
 int			return_error(char *message);
 void		*return_error_null(char *message);
