@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/22 13:31:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/03 10:53:24 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*read_file_to_buffer(int fd)
 	return (buf);
 }
 
-static void	get_dimensions(char **map, t_dimensions *dim)
+static void	get_dimensions(char **map, t_game *game)
 {
 	int	i;
 	int	j;
@@ -58,14 +58,13 @@ static void	get_dimensions(char **map, t_dimensions *dim)
 			j++;
 		i++;
 	}
-	dim->height = i;
-	dim->width = j;
+	game->height = i;
+	game->width = j;
 }
 
-char **get_map(char *argv_one)
+char **get_map(char *argv_one, t_game *game)
 {
 	char			**map;
-	t_dimensions	dim;
 	int				fd;
 	char			*buf;
 
@@ -77,10 +76,10 @@ char **get_map(char *argv_one)
 	buf = read_file_to_buffer(fd);
 	map = ft_split(buf, '\n');
 	free(buf);
-	get_dimensions(map, &dim);
-	if (is_map_valid(map, dim.height, dim.width) == 1)
+	get_dimensions(map, game);
+	if (is_map_valid(map, game->height, game->width) == 1)
 	{
-		free_map(map, dim.height);
+		free_map(map, game->height);
 		return(NULL);
 	}
 	return (map);
@@ -88,29 +87,16 @@ char **get_map(char *argv_one)
 
 int	main(int argc, char **argv)
 {
-	//char **map;
+	t_game game;
 	if (argc != 2)
 		return (return_error("Invalid number of arguments"));
-	//map = 
-	get_map(argv[1]);
+	game.map = get_map(argv[1], &game);
+	if (game.map == NULL)
+		return (1);
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, 64 * game.width, 64 * game.height, "so_long");
+	load_sprites(&game);
+	mlx_loop(game.mlx);
 	
-
-	
-
-	// void	*mlx;
-	// void	*mlx_win;
-	// t_data	img;
-	
-	// mlx = mlx_init();
-	// mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	// img.img = mlx_new_image(mlx, 1920, 1080);
-
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							 &img.endian);
-								 
-	// my_mlx_pixel_put(&img, 1000, 5, 0x00FF0000);
-	
-	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	// mlx_loop(mlx);
 	
 }
