@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/03 10:35:06 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/03 13:43:49 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "libs/Libft/libft.h"
+# include "../libs/Libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <mlx.h>
-
 
 typedef struct s_sprite
 {
@@ -36,15 +35,16 @@ typedef struct s_game
 	t_sprite	collectible;
 	t_sprite	exit;
 	char		**map;
-	int	width;
-	int	height;
+	int			width;
+	int			height;
 	void		*img;
 }	t_game;
 
 int			return_error(char *message);
 void		*return_error_null(char *message);
 
-void load_sprites(t_game *game);
+void		draw_map(t_game *game);
+void		load_sprites(t_game *game);
 void		free_map(char **map, int height);
 char		**get_map(char *argv_one, t_game *game);
 int			is_map_valid(char **map, int height, int width);

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/03 10:53:24 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/03 13:43:13 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ static void	get_dimensions(char **map, t_game *game)
 	game->width = j;
 }
 
-char **get_map(char *argv_one, t_game *game)
+char	**get_map(char *argv_one, t_game *game)
 {
 	char			**map;
 	int				fd;
 	char			*buf;
 
 	if (check_file_extension(argv_one) == 1)
-		return(return_error_null("Invalid file extension"));
+		return (return_error_null("Invalid file extension"));
 	fd = open(argv_one, O_RDONLY);
 	if (fd == -1)
-		return(return_error_null("Failed to open file"));
+		return (return_error_null("Failed to open file"));
 	buf = read_file_to_buffer(fd);
 	map = ft_split(buf, '\n');
 	free(buf);
@@ -80,23 +80,24 @@ char **get_map(char *argv_one, t_game *game)
 	if (is_map_valid(map, game->height, game->width) == 1)
 	{
 		free_map(map, game->height);
-		return(NULL);
+		return (NULL);
 	}
 	return (map);
 }
 
 int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
+
 	if (argc != 2)
 		return (return_error("Invalid number of arguments"));
 	game.map = get_map(argv[1], &game);
 	if (game.map == NULL)
 		return (1);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 64 * game.width, 64 * game.height, "so_long");
+	game.win = mlx_new_window(game.mlx, 64 * game.width, \
+	64 * game.height, "so_long");
 	load_sprites(&game);
+	draw_map(&game);
 	mlx_loop(game.mlx);
-	
-	
 }

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/22 13:01:28 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/03 13:43:09 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static int	count_elements(char **map, int height, int width, char element)
 	}
 	return (count);
 }
-static int check_elements(char **map, int height, int width)
+
+static int	check_elements(char **map, int height, int width)
 {
 	int	y;
 	int	x;
