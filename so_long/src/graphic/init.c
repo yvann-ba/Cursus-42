@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/03 13:43:19 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/04 10:08:52 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,6 @@ void	load_sprites(t_game *game)
 		return_error("Error while loading sprites");
 }
 
-void draw_map(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game->height)
-	{
-		x = 0;
-		while (x < game->width)
-		{
-			draw_sprite(game, game->map[y][x], x, y);
-			x++;
-		}
-		y++;
-	}
-}
-
 void	draw_sprite(t_game *game, char c, int x, int y)
 {
 	if (c == '1')
@@ -68,3 +50,22 @@ void	draw_sprite(t_game *game, char c, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, \
 		game->player.img, x * 64, y * 64);
 }
+
+void draw_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->height)
+	{
+		x = 0;
+		while (x < game->width)
+		{
+			draw_sprite(game, game->map[y][x], x, y);
+			x++;
+		}
+		y++;
+	}
+}
+
