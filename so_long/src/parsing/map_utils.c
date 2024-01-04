@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/03 13:43:16 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/04 13:59:49 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,29 @@ void	free_map(char **map, int height)
 		i++;
 	}
 	free(map);
+}
+
+char	**copy_map(char **original_map, int height, int width)
+{
+	int		y;
+	char	**new_map;
+
+	new_map = (char **)ft_calloc(height, sizeof(char *));
+	if (new_map == NULL)
+		return (NULL);
+	y = 0;
+	while (y < height)
+	{
+		new_map[y] = (char *)ft_calloc(width + 1, sizeof(char));
+		if (new_map[y] == NULL)
+		{
+			while (--y >= 0)
+				free(new_map[y]);
+			free(new_map);
+			return (NULL);
+		}
+		ft_strcpy(new_map[y], original_map[y]);
+		y++;
+	}
+	return (new_map);
 }

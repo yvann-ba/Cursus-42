@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/04 10:08:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/04 14:12:46 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_sprite(t_game *game, char c, int x, int y)
 		game->player.img, x * 64, y * 64);
 }
 
-void draw_map(t_game *game)
+void	draw_map(t_game *game)
 {
 	int	x;
 	int	y;

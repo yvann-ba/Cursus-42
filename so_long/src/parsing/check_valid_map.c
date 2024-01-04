@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/04 11:49:11 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/04 14:09:11 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ static int	check_side_walls(char **map, int height, int width)
 int	is_map_valid(char **map, int height, int width)
 {
 	t_map_info	map_info;
-	
+	char		**map_copy;
+
 	if (height < 3 || width < 3)
 		return (return_error("Invalid map: Too small"));
 	if (height == width)
@@ -100,8 +101,12 @@ int	is_map_valid(char **map, int height, int width)
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
 		return (return_error("Invalid map: Missing walls"));
-	find_start_and_exit(&map_info, map, width, height);
-	if (!backtrack_conditions(&map_info, map, height, width))
+	map_copy = copy_map(map, height, width);
+	if (map_copy == NULL)
+		return (return_error("Error: Unable to create map copy"));
+	find_start_and_exit(&map_info, map_copy, width, height);
+	if (!backtrack_conditions(&map_info, map_copy, height, width))
 		return (return_error("Invalid map: No path to exit"));
+	free_map(map_copy, height);
 	return (0);
 }

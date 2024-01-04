@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:12:37 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/04 12:02:42 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/04 14:14:18 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	backtrack_top(t_map_info *map_info, char **map, int num_rows, int num_cols)
 	map_info->start_x += 1;
 	return (result);
 }
-int	backtrack_bottom(t_map_info *map_info, char **map, int num_rows, int num_cols)
+int	backtrack_bottom(t_map_info *map_info, char **map, int num_rows, \
+int num_cols)
 {
 	int	result;
 
@@ -95,15 +96,15 @@ int backtrack_to_exit(t_map_info *map_info, char **map, int num_rows, int num_co
 
 int backtrack_conditions(t_map_info *map_info, char **map, int num_rows, int num_cols) 
 {
-    if (map_info->start_x == map_info->exit_x && map_info->start_y == map_info->exit_y)
-        return 1;
-    if (map_info->start_x < 0 || map_info->start_x >= num_rows || 
-        map_info->start_y < 0 || map_info->start_y >= num_cols || 
-        map[map_info->start_x][map_info->start_y] == '1' || 
-        map[map_info->start_x][map_info->start_y] == '#')
-        return 0;
+	if (map_info->start_x == map_info->exit_x && map_info->start_y == map_info->exit_y)
+		return 1;
+	if (map_info->start_x < 0 || map_info->start_x >= num_cols || 
+		map_info->start_y < 0 || map_info->start_y >= num_rows || 
+		map[map_info->start_y][map_info->start_x] == '1' || 
+		map[map_info->start_y][map_info->start_x] == '#')
+		return 0;
+	return backtrack_to_exit(map_info, map, num_rows, num_cols);
 
-    return backtrack_to_exit(map_info, map, num_rows, num_cols);
 }
 
 
