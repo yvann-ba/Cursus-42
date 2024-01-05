@@ -6,11 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/04 14:12:46 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/05 08:54:21 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 void	load_sprites(t_game *game)
 {

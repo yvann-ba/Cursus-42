@@ -6,15 +6,15 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 12:39:25 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/04 11:50:10 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/05 08:53:55 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = src/parsing/map_utils.c src/parsing/get_map.c src/parsing/check_valid_map.c \
-src/graphic/init.c src/parsing/research_exit.c
+SRCS = src/map_utils.c src/get_map.c src/check_valid_map.c \
+src/init.c src/research_exit.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long

@@ -6,11 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/04 14:09:11 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:30:04 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 static int	count_elements(char **map, int height, int width, char element)
 {
@@ -105,7 +105,7 @@ int	is_map_valid(char **map, int height, int width)
 	if (map_copy == NULL)
 		return (return_error("Error: Unable to create map copy"));
 	find_start_and_exit(&map_info, map_copy, width, height);
-	if (!backtrack_conditions(&map_info, map_copy, height, width))
+	if (!backtrack_to_exit(&map_info, map_copy, height, width))
 		return (return_error("Invalid map: No path to exit"));
 	free_map(map_copy, height);
 	return (0);

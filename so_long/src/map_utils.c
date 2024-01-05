@@ -6,11 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/04 13:59:49 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:37:54 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 int	return_error(char *message)
 {
@@ -62,4 +62,32 @@ char	**copy_map(char **original_map, int height, int width)
 		y++;
 	}
 	return (new_map);
+}
+
+void	find_start_and_exit(t_map_info *map_info, char **map,
+int width, int height)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			if (map[y][x] == 'P')
+			{
+				map_info->start_x = x;
+				map_info->start_y = y;
+			}
+			if (map[y][x] == 'E')
+			{
+				map_info->exit_x = x;
+				map_info->exit_y = y;
+			}
+			x++;
+		}
+		y++;
+	}
 }

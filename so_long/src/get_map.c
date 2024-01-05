@@ -6,11 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/03 13:43:13 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/05 09:17:42 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 static int	check_file_extension(char *file)
 {
