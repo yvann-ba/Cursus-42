@@ -6,13 +6,13 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/05 10:30:04 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/05 13:51:06 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	count_elements(char **map, int height, int width, char element)
+int	count_elements(char **map, int height, int width, char element)
 {
 	int	count;
 	int	y;
@@ -85,9 +85,6 @@ static int	check_side_walls(char **map, int height, int width)
 
 int	is_map_valid(char **map, int height, int width)
 {
-	t_map_info	map_info;
-	char		**map_copy;
-
 	if (height < 3 || width < 3)
 		return (return_error("Invalid map: Too small"));
 	if (height == width)
@@ -101,12 +98,40 @@ int	is_map_valid(char **map, int height, int width)
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
 		return (return_error("Invalid map: Missing walls"));
+	is_backtrack_exit_valid(map, height, width);
+	is_backtrack_collectible_valid(map, height, width);
+	return (0);
+}
+
+int is_backtrack_exit_valid(char **map, int height, int width)
+{
+	t_map_info	map_info_exit;
+	char		**map_copy;
+
 	map_copy = copy_map(map, height, width);
 	if (map_copy == NULL)
-		return (return_error("Error: Unable to create map copy"));
-	find_start_and_exit(&map_info, map_copy, width, height);
-	if (!backtrack_to_exit(&map_info, map_copy, height, width))
+		return (return_error("Error: Unable to create map copy exit"));
+	find_start_and_exit(&map_info_exit, map_copy, width, height);
+	if (!backtrack_to_exit(&map_info_exit, map_copy, height, width))
 		return (return_error("Invalid map: No path to exit"));
+	free_map(map_copy, height);
+	return (0);
+}
+
+int is_backtrack_collectible_valid(char **map, int height, int width)
+{
+	t_collectible	*collectibles;
+	char			**map_copy;
+
+	map_copy = copy_map(map, height, width);
+	if (map_copy == NULL)
+		return (return_error("Error: Unable to create map copy collectible"));
+		
+	find_player_position(&collectibles, map, width, height);
+	
+	find_collectibles_positions(&collectibles, map, width, height);
+	// if (!backtrack_to_collectible(&collectibles, map_copy, height, width))
+	// 	return (return_error("Invalid map: No path to collectible"));
 	free_map(map_copy, height);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/05 10:32:09 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/05 13:57:36 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ typedef struct s_map_info {
 	int		exit_x;
 	int		exit_y;
 }	t_map_info;
+
+typedef struct s_collectible{
+	int	start_x;
+	int	start_y;
+	t_point	*position;
+}	t_collectible;
+
+typedef struct s_point {
+	int	x;
+	int	y;
+}	t_point;
 
 int			return_error(char *message);
 void		*return_error_null(char *message);
