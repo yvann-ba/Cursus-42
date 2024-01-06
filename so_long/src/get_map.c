@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/05 09:17:42 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/06 09:58:08 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ int	main(int argc, char **argv)
 	load_sprites(&game);
 	draw_map(&game);
 	mlx_loop(game.mlx);
+	return (0);
 }

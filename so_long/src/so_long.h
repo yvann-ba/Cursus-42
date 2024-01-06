@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/06 09:42:34 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/06 11:24:21 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ typedef struct s_map_info {
 	int		start_y;
 	int		exit_x;
 	int		exit_y;
+	t_point	*position;
 }	t_map_info;
+
 
 typedef struct s_point {
 	int	x;
@@ -55,7 +57,7 @@ typedef struct s_point {
 typedef struct s_collectible{
 	int	start_x;
 	int	start_y;
-	t_point	*position;
+	
 }	t_collectible;
 
 int			return_error(char *message);
@@ -83,5 +85,6 @@ void 		fill_collectibles_positions(t_collectible *collectibles, char **map, int 
 void 		find_player_position(t_collectible *collectibles, char **map, int width, int height);
 
 char		**copy_map(char **original_map, int height, int width);
+int	count_elements(char **map, int height, int width, char element);
 
 #endif

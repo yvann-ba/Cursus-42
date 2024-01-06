@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:43:53 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/06 09:39:16 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/06 11:01:57 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,86 @@ void fill_collectibles_positions(t_collectible *collectibles, char **map, int wi
 		}
 		y++;
 	}
+}
+
+int	backtrack_top(t_collectible *collectibles, char **map, int num_rows, int num_cols)
+{
+	int	result;
+
+	result = 0;
+	if (collectibles->start_y > 0)
+	{
+		collectibles->start_y -= 1;
+		result = backtrack_to_exit(collectibles, map, num_rows, num_cols);
+		collectibles->start_y += 1;
+	}
+	return (result);
+}
+
+int	backtrack_bottom(t_collectible *collectibles, char **map, int num_rows,
+int num_cols)
+{
+	int	result;
+
+	result = 0;
+	if (collectibles->start_y < num_rows - 1)
+	{
+		collectibles->start_y += 1;
+		result = backtrack_to_exit(collectibles, map, num_rows, num_cols);
+		collectibles->start_y -= 1;
+	}
+	return (result);
+}
+
+int	backtrack_right(t_collectible *collectibles, char **map, int num_rows,
+int num_cols)
+{
+	int	result;
+
+	result = 0;
+	if (collectibles->start_x < num_cols - 1)
+	{
+		collectibles->start_x += 1;
+		result = backtrack_to_exit(collectibles, map, num_rows, num_cols);
+		collectibles->start_x -= 1;
+	}
+	return (result);
+}
+
+int	backtrack_left(t_collectible *collectibles, char **map, int num_rows, int num_cols)
+{
+	int	result;
+
+	result = 0;
+	if (collectibles->start_x > 0)
+	{
+		collectibles->start_x -= 1;
+		result = backtrack_to_exit(collectibles, map, num_rows, num_cols);
+		collectibles->start_x += 1;
+	}
+	return (result);
+}
+
+
+int	backtrack_to_collectibles(t_collectible *collectibles, char **map, int num_rows,
+int num_cols)
+{
+	int	result;
+
+	if (collectibles->start_x == collectibles->exit_x
+		&& collectibles->start_y == collectibles->exit_y)
+		return (1);
+	if (collectibles->start_x < 0 || collectibles->start_x >= num_cols
+		|| collectibles->start_y < 0 || collectibles->start_y >= num_rows
+		|| map[collectibles->start_y][collectibles->start_x] == '1'
+		|| map[collectibles->start_y][collectibles->start_x] == '#')
+		return (0);
+	result = 0;
+	map[collectibles->start_y][collectibles->start_x] = '#';
+	result = backtrack_top(collectibles, map, num_rows, num_cols)
+		|| backtrack_bottom(collectibles, map, num_rows, num_cols)
+		|| backtrack_left(collectibles, map, num_rows, num_cols)
+		|| backtrack_right(collectibles, map, num_rows, num_cols);
+	map[collectibles->start_y][collectibles->start_x] = '0';
+	return (result);
 }
