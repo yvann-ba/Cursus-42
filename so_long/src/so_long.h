@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/05 13:57:36 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/06 09:42:34 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,16 @@ typedef struct s_map_info {
 	int		exit_y;
 }	t_map_info;
 
+typedef struct s_point {
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_collectible{
 	int	start_x;
 	int	start_y;
 	t_point	*position;
 }	t_collectible;
-
-typedef struct s_point {
-	int	x;
-	int	y;
-}	t_point;
 
 int			return_error(char *message);
 void		*return_error_null(char *message);
@@ -75,6 +75,13 @@ void		find_start_and_exit(t_map_info *map_info, char **map, \
 			int width, int height);
 int			backtrack_to_exit(t_map_info *map_info, char **map, \
 int num_rows, int num_cols);
+
+int 		is_backtrack_exit_valid(char **map, int height, int width);
+int			is_backtrack_collectible_valid(char **map, int height, int width);
+
+void 		fill_collectibles_positions(t_collectible *collectibles, char **map, int width, int height);
+void 		find_player_position(t_collectible *collectibles, char **map, int width, int height);
+
 char		**copy_map(char **original_map, int height, int width);
 
 #endif

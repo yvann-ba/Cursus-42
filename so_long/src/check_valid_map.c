@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/05 13:51:06 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/06 09:28:58 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int is_backtrack_exit_valid(char **map, int height, int width)
 
 int is_backtrack_collectible_valid(char **map, int height, int width)
 {
-	t_collectible	*collectibles;
+	t_collectible	collectibles;
 	char			**map_copy;
 
 	map_copy = copy_map(map, height, width);
@@ -129,7 +129,7 @@ int is_backtrack_collectible_valid(char **map, int height, int width)
 		
 	find_player_position(&collectibles, map, width, height);
 	
-	find_collectibles_positions(&collectibles, map, width, height);
+	fill_collectibles_positions(&collectibles, map, width, height);
 	// if (!backtrack_to_collectible(&collectibles, map_copy, height, width))
 	// 	return (return_error("Invalid map: No path to collectible"));
 	free_map(map_copy, height);
