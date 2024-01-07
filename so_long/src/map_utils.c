@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/05 10:37:54 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/07 10:46:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,19 @@ char	**copy_map(char **original_map, int height, int width)
 	return (new_map);
 }
 
-void	find_start_and_exit(t_map_info *map_info, char **map,
-int width, int height)
+int	is_backtrack_exit_collectibles_valid(char **map, int height, int width)
 {
-	int	x;
-	int	y;
+	char		**map_copy;
+	t_pos		player;
 
-	y = 0;
-	while (y < height)
-	{
-		x = 0;
-		while (x < width)
-		{
-			if (map[y][x] == 'P')
-			{
-				map_info->start_x = x;
-				map_info->start_y = y;
-			}
-			if (map[y][x] == 'E')
-			{
-				map_info->exit_x = x;
-				map_info->exit_y = y;
-			}
-			x++;
-		}
-		y++;
-	}
+	map_copy = copy_map(map, height, width);
+	if (map_copy == NULL)
+		return (return_error("Error: Unable to create map copy exit"));
+	player = research_char(map_copy, (t_pos){0, 0}, 'P', height);
+	if (research_exit_collectibles(map_copy, player, 'C', height) == -1)
+		return (return_error("Invalid map: Can't access collectibles"));
+	else if (research_exit_collectibles(map_copy, player, 'E', height) == -1)
+		return (return_error("Invalid map: No path to exit"));
+	free_map(map_copy, height);
+	return (0);
 }

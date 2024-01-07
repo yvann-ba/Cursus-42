@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/06 11:24:21 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/07 10:45:29 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,51 +40,27 @@ typedef struct s_game
 	void		*img;
 }	t_game;
 
-typedef struct s_map_info {
-	int		start_x;
-	int		start_y;
-	int		exit_x;
-	int		exit_y;
-	t_point	*position;
-}	t_map_info;
-
-
-typedef struct s_point {
+typedef struct s_pos{
 	int	x;
 	int	y;
-}	t_point;
+}	t_pos;
 
-typedef struct s_collectible{
-	int	start_x;
-	int	start_y;
-	
-}	t_collectible;
+int		return_error(char *message);
+void	*return_error_null(char *message);
 
-int			return_error(char *message);
-void		*return_error_null(char *message);
+void	draw_map(t_game *game);
+void	draw_sprite(t_game *game, char c, int x, int y);
+void	load_sprites(t_game *game);
 
-void		draw_map(t_game *game);
-void		draw_sprite(t_game *game, char c, int x, int y);
-void		load_sprites(t_game *game);
-
-void		free_map(char **map, int height);
-char		**get_map(char *argv_one, t_game *game);
-int			is_map_valid(char **map, int height, int width);
-
-int			backtrack_conditions(t_map_info *map_info, char **map, \
-			int num_rows, int num_cols);
-void		find_start_and_exit(t_map_info *map_info, char **map, \
-			int width, int height);
-int			backtrack_to_exit(t_map_info *map_info, char **map, \
-int num_rows, int num_cols);
-
-int 		is_backtrack_exit_valid(char **map, int height, int width);
-int			is_backtrack_collectible_valid(char **map, int height, int width);
-
-void 		fill_collectibles_positions(t_collectible *collectibles, char **map, int width, int height);
-void 		find_player_position(t_collectible *collectibles, char **map, int width, int height);
-
-char		**copy_map(char **original_map, int height, int width);
-int	count_elements(char **map, int height, int width, char element);
+void	free_map(char **map, int height);
+char	**get_map(char *argv_one, t_game *game);
+int		is_map_valid(char **map, int height, int width);
+t_pos	research_char(char **tab, t_pos start, char c, int height);
+int		is_backtrack_exit_collectibles_valid(char **map, int height, int width);
+int		research_exit_collectibles(char **map, t_pos player, \
+char c, int height);
+int		is_backtrack_exit_collectibles_valid(char **map, int height, int width);
+char	**copy_map(char **original_map, int height, int width);
+int		count_elements(char **map, int height, int width, char element);
 
 #endif

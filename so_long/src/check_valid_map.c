@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/06 09:28:58 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/07 10:45:43 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,40 +98,7 @@ int	is_map_valid(char **map, int height, int width)
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
 		return (return_error("Invalid map: Missing walls"));
-	is_backtrack_exit_valid(map, height, width);
-	is_backtrack_collectible_valid(map, height, width);
-	return (0);
-}
-
-int is_backtrack_exit_valid(char **map, int height, int width)
-{
-	t_map_info	map_info_exit;
-	char		**map_copy;
-
-	map_copy = copy_map(map, height, width);
-	if (map_copy == NULL)
-		return (return_error("Error: Unable to create map copy exit"));
-	find_start_and_exit(&map_info_exit, map_copy, width, height);
-	if (!backtrack_to_exit(&map_info_exit, map_copy, height, width))
+	if (is_backtrack_exit_collectibles_valid(map, height, width) == 1)
 		return (return_error("Invalid map: No path to exit"));
-	free_map(map_copy, height);
-	return (0);
-}
-
-int is_backtrack_collectible_valid(char **map, int height, int width)
-{
-	t_collectible	collectibles;
-	char			**map_copy;
-
-	map_copy = copy_map(map, height, width);
-	if (map_copy == NULL)
-		return (return_error("Error: Unable to create map copy collectible"));
-		
-	find_player_position(&collectibles, map, width, height);
-	
-	fill_collectibles_positions(&collectibles, map, width, height);
-	// if (!backtrack_to_collectible(&collectibles, map_copy, height, width))
-	// 	return (return_error("Invalid map: No path to collectible"));
-	free_map(map_copy, height);
 	return (0);
 }

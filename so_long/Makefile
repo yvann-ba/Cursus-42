@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 12:39:25 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/06 10:06:07 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/07 10:47:42 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -g 
 
 SRCS = src/get_map.c src/map_utils.c  src/check_valid_map.c \
-src/init.c src/research_exit.c src/research_collectible.c
+src/init.c src/research_backtrack.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long
@@ -31,10 +31,10 @@ INCLUDES = -I/usr/include -I$(MLX_DIR) -I$(LIBFT_DIR)/includes
 all: libft mlx $(NAME)
 
 libft:
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) --quiet -C $(LIBFT_DIR)
 
 mlx:
-	$(MAKE) -C $(MLX_DIR)
+	$(MAKE) --quiet -C $(MLX_DIR)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS) $(LIBFT)
@@ -44,12 +44,12 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) --quiet -C $(LIBFT_DIR) clean
+	$(MAKE) --quiet -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	# $(MAKE) -C $(MLX_DIR) fclean
+	$(MAKE) --quiet -C $(LIBFT_DIR) fclean
+	# $(MAKE) --quiet -C $(MLX_DIR) fclean
 
 re: fclean all
