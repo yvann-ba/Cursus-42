@@ -19,7 +19,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build", // This should match the label of your build task in tasks.json
+            "preLaunchTask": "build",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]

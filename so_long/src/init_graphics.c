@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/07 10:48:55 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/09 09:22:26 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,21 @@ void	draw_map(t_game *game)
 		}
 		y++;
 	}
+}
+
+int init_graphics(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (return_error("Error while initializing mlx"));
+	game->win = mlx_new_window(game->mlx, 64 * game->width, \
+	64 * game->height, "so_long");
+	if (!game->win)
+		return (return_error("Error while creating window"));
+	load_sprites(game);
+	draw_map(game);
+	mlx_hook(game->win, 17, 0, close_window, game);
+	mlx_key_hook(game->win, key_press, game);
+	mlx_loop(game->mlx);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/06 09:58:08 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/09 09:36:08 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,6 @@ int	main(int argc, char **argv)
 	game.map = get_map(argv[1], &game);
 	if (game.map == NULL)
 		return (1);
-	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 64 * game.width, \
-	64 * game.height, "so_long");
-	load_sprites(&game);
-	draw_map(&game);
-	mlx_loop(game.mlx);
-	return (0);
+	init_graphics(&game);
+	free_map(game.map, game.height);
 }
