@@ -6,14 +6,14 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/09 09:31:54 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/09 11:08:00 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#define KEY_ESC 0xff1b
+# define KEY_ESC 0xff1b
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -55,6 +55,7 @@ void	draw_map(t_game *game);
 void	draw_sprite(t_game *game, char c, int x, int y);
 void	load_sprites(t_game *game);
 
+void	cleanup(t_game *game);
 
 int		init_graphics(t_game *game);
 void	free_map(char **map, int height);
@@ -68,7 +69,7 @@ int		is_backtrack_exit_collectibles_valid(char **map, int height, int width);
 char	**copy_map(char **original_map, int height, int width);
 int		count_elements(char **map, int height, int width, char element);
 
-int close_window(t_game *game);
-int key_press(int keycode, t_game *game);
+int		close_window(t_game *game);
+int		key_press(int keycode, t_game *game);
 
 #endif

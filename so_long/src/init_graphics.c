@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/09 09:22:26 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/09 11:07:28 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ void	draw_map(t_game *game)
 	}
 }
 
-int init_graphics(t_game *game)
+int	init_graphics(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return (return_error("Error while initializing mlx"));
+		return (cleanup(game), return_error("Error initializing mlx"));
 	game->win = mlx_new_window(game->mlx, 64 * game->width, \
 	64 * game->height, "so_long");
 	if (!game->win)
-		return (return_error("Error while creating window"));
+		return (cleanup(game), return_error("Error creating window"));
 	load_sprites(game);
 	draw_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
