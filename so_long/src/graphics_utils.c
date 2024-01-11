@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:06:05 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/11 10:26:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 13:23:23 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int key_press(int keycode, t_game *game)
     if (keycode == KEY_ESC)
         close_window(game);
     else if (keycode == KEY_UP)
-        game->move_up = 1;
+        move_player_up(game);
     else if (keycode == KEY_DOWN)
-        game->move_down = 1;
+        move_player_down(game);
     else if (keycode == KEY_LEFT)
-        game->move_left = 1;
+        move_player_left(game);
     else if (keycode == KEY_RIGHT)
-        game->move_right = 1;
+        move_player_right(game);
     return (0);
 }
 

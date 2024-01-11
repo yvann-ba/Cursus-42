@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/07 10:54:40 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:06:20 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	check_side_walls(char **map, int height, int width)
 	return (0);
 }
 
-int	is_map_valid(char **map, int height, int width)
+int	is_map_valid(char **map, int height, int width, t_game *game)
 {
 	if (height < 3 || width < 3)
 		return (return_error("Invalid map: Too small"));
@@ -95,9 +95,10 @@ int	is_map_valid(char **map, int height, int width)
 	|| count_elements(map, height, width, 'C') < 1 \
 	|| count_elements(map, height, width, 'P') != 1)
 		return (return_error("Invalid map: Missing or too many elements"));
+	game->collectible_count = count_elements(map, height, width, 'C');
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
 		return (return_error("Invalid map: Missing walls"));
-	is_backtrack_exit_collectibles_valid(map, height, width);
+	is_backtrack_exit_collectibles_valid(map, height, width, game);
 	return (0);
 }

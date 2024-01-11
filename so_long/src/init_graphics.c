@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/11 10:59:01 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 13:03:09 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,6 @@ void	draw_map(t_game *game)
 	}
 }
 
-int update_game_state(t_game *game)
-{
-	
-    draw_map(game);
-    return (0);
-}
-
-
 int	init_graphics(t_game *game)
 {
 	game->mlx = mlx_init();
@@ -90,7 +82,6 @@ int	init_graphics(t_game *game)
 	draw_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_key_hook(game->win, key_press, game);
-	mlx_loop_hook(game->mlx, update_game_state, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

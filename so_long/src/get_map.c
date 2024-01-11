@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/09 09:46:36 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 13:18:39 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**get_map(char *argv_one, t_game *game)
 	map = ft_split(buf, '\n');
 	free(buf);
 	get_dimensions(map, game);
-	if (is_map_valid(map, game->height, game->width) == 1)
+	if (is_map_valid(map, game->height, game->width, game) == 1)
 	{
 		free_map(map, game->height);
 		return (NULL);
