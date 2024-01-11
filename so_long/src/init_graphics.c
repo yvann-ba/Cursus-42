@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/11 13:03:09 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 21:56:14 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ void	draw_sprite(t_game *game, char c, int x, int y)
 		game->player.img, game->player_pos.x * 64, game->player_pos.y * 64);
 }
 
-void	draw_map(t_game *game)
+int	draw_map(void *game_ptr)
 {
-	int	x;
-	int	y;
-
+	t_game	*game;
+	int		y;
+	int		x;
+	
+	game = (t_game *)game_ptr;
 	y = 0;
 	while (y < game->height)
 	{
@@ -67,6 +69,7 @@ void	draw_map(t_game *game)
 		}
 		y++;
 	}
+	return (0);
 }
 
 int	init_graphics(t_game *game)
@@ -81,6 +84,7 @@ int	init_graphics(t_game *game)
 	load_sprites(game);
 	draw_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
+	mlx_loop_hook(game->mlx, draw_map, game);
 	mlx_key_hook(game->win, key_press, game);
 	mlx_loop(game->mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/11 14:07:10 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 22:00:00 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_game
 int		return_error(char *message);
 void	*return_error_null(char *message);
 
-void	draw_map(t_game *game);
+int	draw_map(void *game);
 void	draw_sprite(t_game *game, char c, int x, int y);
 void	load_sprites(t_game *game);
 
