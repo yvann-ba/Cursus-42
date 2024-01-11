@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/09 11:08:00 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:52:26 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define SO_LONG_H
 
 # define KEY_ESC 0xff1b
+# define KEY_UP 0xff52
+# define KEY_DOWN 0xff54
+# define KEY_LEFT 0xff51
+# define KEY_RIGHT 0xff53
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -26,6 +30,12 @@ typedef struct s_sprite
 {
 	void	*img;
 }	t_sprite;
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
 
 typedef struct s_game
 {
@@ -40,13 +50,8 @@ typedef struct s_game
 	int			width;
 	int			height;
 	void		*img;
+	t_pos		player_pos;
 }	t_game;
-
-typedef struct s_pos
-{
-	int	x;
-	int	y;
-}	t_pos;
 
 int		return_error(char *message);
 void	*return_error_null(char *message);

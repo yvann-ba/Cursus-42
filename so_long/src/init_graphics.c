@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/09 11:07:28 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:59:01 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_sprite(t_game *game, char c, int x, int y)
 		game->exit.img, x * 64, y * 64);
 	else if (c == 'P')
 		mlx_put_image_to_window(game->mlx, game->win, \
-		game->player.img, x * 64, y * 64);
+		game->player.img, game->player_pos.x * 64, game->player_pos.y * 64);
 }
 
 void	draw_map(t_game *game)
@@ -69,6 +69,14 @@ void	draw_map(t_game *game)
 	}
 }
 
+int update_game_state(t_game *game)
+{
+	
+    draw_map(game);
+    return (0);
+}
+
+
 int	init_graphics(t_game *game)
 {
 	game->mlx = mlx_init();
@@ -82,6 +90,7 @@ int	init_graphics(t_game *game)
 	draw_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_key_hook(game->win, key_press, game);
+	mlx_loop_hook(game->mlx, update_game_state, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

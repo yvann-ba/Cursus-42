@@ -6,13 +6,33 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/07 11:11:13 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:10:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static int	can_go_position(char **map, t_pos player, t_pos dest);
+
+static char **clean_map(char **map)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (map[y] != NULL)
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'X')
+				map[y][x] = '0';
+			x++;
+		}
+		y++;
+	}
+	return (map);
+}
 
 t_pos	research_char(char **map, t_pos start, char c, int height)
 {
@@ -75,6 +95,7 @@ int	research_exit_collectibles(char **cpy_map, t_pos player, char c, int height)
 			break ;
 		if (can_go_position(cpy_map, player, destination) == -1)
 			return (-1);
+		cpy_map = clean_map(cpy_map);
 		start.x = destination.x + 1;
 		start.y = destination.y;
 	}
