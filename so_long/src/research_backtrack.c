@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/11 21:03:14 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/12 00:34:13 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static int	can_go_position(char **map, t_pos player, t_pos dest);
 
-// static char **clean_map(char **map)
-// {
-// 	int	y;
-// 	int	x;
+static char	**clean_map(char **map)
+{
+	int	y;
+	int	x;
 
-// 	y = 0;
-// 	while (map[y])
-// 	{
-// 		x = 0;
-// 		while (map[y][x] != '\0')
-// 		{
-// 			if (map[y][x] == 'X')
-// 				map[y][x] = '0';
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	return (map);
-// }
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'X')
+				map[y][x] = '0';
+			x++;
+		}
+		y++;
+	}
+	return (map);
+}
 
 t_pos	research_char(char **map, t_pos start, char c, int height)
 {
@@ -64,16 +64,17 @@ t_pos	research_char(char **map, t_pos start, char c, int height)
 
 static int	can_go_position(char **map, t_pos player, t_pos dest)
 {
-	if (player.x < 0 || player.y < 0 || map[player.y] == NULL
-		|| map[player.y][player.x] == '\0'
-			|| map[player.y][player.x] == 'X'
-			|| map[player.y][player.x] == '1')
-		return (0);
 	if ((player.x == dest.x) && (player.y == dest.y))
 	{
 		map[player.y][player.x] = '#';
 		return (1);
 	}
+	if (player.x < 0 || player.y < 0 || map[player.y] == NULL
+		|| map[player.y][player.x] == '\0'
+			|| map[player.y][player.x] == 'X'
+			|| map[player.y][player.x] == '1'
+			|| map[player.y][player.x] == 'E')
+		return (0);
 	map[player.y][player.x] = 'X';
 	return (can_go_position(map, (t_pos){player.x - 1, player.y}, dest) != -1
 		|| can_go_position(map, (t_pos){player.x + 1, player.y}, dest) != -1
@@ -95,7 +96,7 @@ int	research_exit_collectibles(char **cpy_map, t_pos player, char c, int height)
 			break ;
 		if (can_go_position(cpy_map, player, destination) == -1)
 			return (-1);
-		//cpy_map = clean_map(cpy_map);
+		cpy_map = clean_map(cpy_map);
 		start.x = destination.x + 1;
 		start.y = destination.y;
 	}

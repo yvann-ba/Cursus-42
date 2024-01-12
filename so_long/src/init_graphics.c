@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:03 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/11 21:56:14 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/12 00:28:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ void	load_sprites(t_game *game)
 		&width, &height);
 	if (!game->player.img || !game->wall.img || !game->empty.img \
 		|| !game->collectible.img || !game->exit.img)
+	{
 		return_error("Error while loading sprites");
+		cleanup(game);
+		exit(1);
+	}
 }
 
 void	draw_sprite(t_game *game, char c, int x, int y)
@@ -56,7 +60,7 @@ int	draw_map(void *game_ptr)
 	t_game	*game;
 	int		y;
 	int		x;
-	
+
 	game = (t_game *)game_ptr;
 	y = 0;
 	while (y < game->height)
@@ -74,6 +78,7 @@ int	draw_map(void *game_ptr)
 
 int	init_graphics(t_game *game)
 {
+	game->move_count = 0;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (cleanup(game), return_error("Error initializing mlx"));
@@ -85,7 +90,7 @@ int	init_graphics(t_game *game)
 	draw_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop_hook(game->mlx, draw_map, game);
-	mlx_key_hook(game->win, key_press, game);
+	mlx_hook(game->win, 2, 1L << 0, key_press, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

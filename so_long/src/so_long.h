@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/11 22:00:00 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/12 00:23:51 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ typedef struct s_game
 	int			height;
 	void		*img;
 	t_pos		player_pos;
-	int 		collectible_count;
+	int			collectible_count;
 	int			move_count;
 }	t_game;
 
 int		return_error(char *message);
 void	*return_error_null(char *message);
 
-int	draw_map(void *game);
+int		draw_map(void *game);
 void	draw_sprite(t_game *game, char c, int x, int y);
 void	load_sprites(t_game *game);
 
@@ -69,7 +69,8 @@ void	free_map(char **map, int height);
 char	**get_map(char *argv_one, t_game *game);
 int		is_map_valid(char **map, int height, int width, t_game *game);
 t_pos	research_char(char **tab, t_pos start, char c, int height);
-int		is_backtrack_exit_collectibles_valid(char **map, int height, int width, t_game *game);
+int		is_backtrack_exit_collectibles_valid(char **map, int height, \
+int width, t_game *game);
 int		research_exit_collectibles(char **map, t_pos player, \
 char c, int height);
 char	**copy_map(char **original_map, int height, int width);
@@ -78,9 +79,9 @@ int		count_elements(char **map, int height, int width, char element);
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
 
-void move_player_up(t_game *game);
-void move_player_down(t_game *game);
-void move_player_left(t_game *game);
-void move_player_right(t_game *game);
+void	move_player_up(t_game *game);
+void	move_player_down(t_game *game);
+void	move_player_left(t_game *game);
+void	move_player_right(t_game *game);
 
 #endif
