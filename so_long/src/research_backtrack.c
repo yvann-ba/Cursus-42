@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/12 00:34:13 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/12 01:20:42 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ static int	can_go_position(char **map, t_pos player, t_pos dest)
 			|| map[player.y][player.x] == 'E')
 		return (0);
 	map[player.y][player.x] = 'X';
-	return (can_go_position(map, (t_pos){player.x - 1, player.y}, dest) != -1
-		|| can_go_position(map, (t_pos){player.x + 1, player.y}, dest) != -1
-		|| can_go_position(map, (t_pos){player.x, player.y - 1}, dest) != -1
-		|| can_go_position(map, (t_pos){player.x, player.y + 1}, dest) != -1);
+	return (can_go_position(map, (t_pos){player.x - 1, player.y}, dest)
+		|| can_go_position(map, (t_pos){player.x + 1, player.y}, dest)
+		|| can_go_position(map, (t_pos){player.x, player.y - 1}, dest)
+		|| can_go_position(map, (t_pos){player.x, player.y + 1}, dest));
 }
 
 int	research_exit_collectibles(char **cpy_map, t_pos player, char c, int height)
