@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/13 17:44:32 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:05:32 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int width, t_game *game)
 	game->player_pos = player;
 	if (research_exit_collectibles(map_copy, player, 'C', height) == -1)
 	{
+		free_map(map_copy2, height);
 		return_error("Invalid map: Can't access collectibles");
 		return (1);
 	}
