@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/13 14:37:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:10:46 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static char	*read_file_to_buffer(int fd)
 	char	*tmp;
 
 	buf = ft_calloc(1, 1);
+	if (buf == NULL)
+		exit(0);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -75,13 +77,12 @@ char	**get_map(char *argv_one, t_game *game)
 	}
 	fd = open(argv_one, O_RDONLY);
 	if (fd == -1)
-	{
-		return_error("Failed to open file");
-		return (NULL);
-	}
+		return (return_error_null ("Failed to open file"));
 	buf = read_file_to_buffer(fd);
 	map = ft_split(buf, '\n');
 	free(buf);
+	if (!map)
+		exit(0);
 	get_dimensions(map, game);
 	if (is_map_valid(map, game->height, game->width, game) == 1)
 	{

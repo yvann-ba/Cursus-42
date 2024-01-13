@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/13 15:07:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:44:32 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**copy_map(char **original_map, int height, int width)
 	y = 0;
 	while (y < height)
 	{
-		new_map[y] = (char *)ft_calloc(width + 1, sizeof(char));
+		new_map[y] = (char *)ft_calloc(width + 2, sizeof(char));
 		if (new_map[y] == NULL)
 		{
 			while (--y >= 0)
@@ -58,25 +58,26 @@ char	**copy_map(char **original_map, int height, int width)
 	return (new_map);
 }
 
-static char **replace_exit_by_wall(char **map, int height, char replace_with)
-{
-	int	x;
-	int	y;
+// static	char	**replace_exit_by_wall(char **map, int height, \
+// char replace_with)
+// {
+// 	int	x;
+// 	int	y;
 
-	y = 0;
-	while (y < height)
-	{
-		x = 0;
-		while (map[y][x] != '\0')
-		{
-			if (map[y][x] == 'E')
-				map[y][x] = replace_with;
-			x++;
-		}
-		y++;
-	}
-	return (map);
-}
+// 	y = 0;
+// 	while (y < height)
+// 	{
+// 		x = 0;
+// 		while (map[y][x] != '\0')
+// 		{
+// 			if (map[y][x] == 'E')
+// 				map[y][x] = replace_with;
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	return (map);
+// }
 
 int	is_backtrack_exit_collectibles_valid(char **map, int height, \
 int width, t_game *game)
@@ -87,10 +88,10 @@ int width, t_game *game)
 
 	map_copy = copy_map(map, height, width);
 	map_copy2 = copy_map(map, height, width);
-	map_copy = replace_exit_by_wall(map_copy, height, '1');
-	if (map_copy == NULL)
+	// map_copy = replace_exit_by_wall(map_copy, height, '1');
+	if (map_copy == NULL || map_copy2 == NULL)
 	{
-		return_error("Error: Unable to create map copy exit");
+		return_error("Error: Unable to create map copy");
 		return (1);
 	}
 	player = research_char(map_copy, (t_pos){0, 0}, 'P', height);

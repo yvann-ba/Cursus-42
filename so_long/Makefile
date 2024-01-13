@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 12:39:25 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/11 13:04:59 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/13 15:48:45 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,15 @@ INCLUDES = -I/usr/include -I$(MLX_DIR) -I$(LIBFT_DIR)/includes
 
 .PHONY: all clean fclean re libft mlx
 
-all: libft mlx $(NAME)
+all: $(NAME)
 
-libft:
+$(LIBFT):
 	$(MAKE) --quiet -C $(LIBFT_DIR)
 
-mlx:
+$(MLX):
 	$(MAKE) --quiet -C $(MLX_DIR)
 
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS) $(LIBFT)
 
 .c.o:

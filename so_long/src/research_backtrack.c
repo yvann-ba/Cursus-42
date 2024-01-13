@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/13 15:14:29 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:55:49 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ t_pos	research_char(char **map, t_pos start, char c, int height)
 	find.y = -1;
 	find.x = -1;
 	y = start.y;
+	x = start.x;
 	while (y < height && map[y] != NULL)
 	{
-		x = start.x;
+		x = 0;
 		while (map[y][x] != '\0' && x < (int)ft_strlen(map[y]))
 		{
 			if (map[y][x] == c)
@@ -57,7 +58,6 @@ t_pos	research_char(char **map, t_pos start, char c, int height)
 			x++;
 		}
 		y++;
-		start.x = 0;
 	}
 	return (find);
 }
@@ -97,8 +97,13 @@ int	research_exit_collectibles(char **cpy_map, t_pos player, char c, int height)
 		if (can_go_position(cpy_map, player, destination) == 0)
 			return (-1);
 		cpy_map = clean_map(cpy_map);
-		start.x = destination.x + 1;
-		start.y = destination.y;
+		if (start.x + 1 < (int)ft_strlen(cpy_map[start.y]))
+			start.x++;
+		else
+		{
+			start.x = 0;
+			start.y++;
+		}
 	}
 	free_map(cpy_map, height);
 	return (1);

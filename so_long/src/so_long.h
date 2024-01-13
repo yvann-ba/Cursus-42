@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/12 00:23:51 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:09:43 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define KEY_DOWN 0xff54
 # define KEY_LEFT 0xff51
 # define KEY_RIGHT 0xff53
+# define KEY_W 0x0077
+# define KEY_S 0x0073
+# define KEY_A 0x0061
+# define KEY_D 0x0064
 
 # include <stdio.h>
 # include <stdlib.h>
