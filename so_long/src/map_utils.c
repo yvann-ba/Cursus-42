@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/12 00:58:08 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:07:52 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ int	return_error(char *message)
 {
 	ft_printf("Error : %s\n", message);
 	return (1);
-}
-
-void	*return_error_null(char *message)
-{
-	ft_printf("Error : %s\n", message);
-	return (NULL);
 }
 
 void	free_map(char **map, int height)
@@ -64,6 +58,26 @@ char	**copy_map(char **original_map, int height, int width)
 	return (new_map);
 }
 
+static char **replace_exit_by_wall(char **map, int height, char replace_with)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'E')
+				map[y][x] = replace_with;
+			x++;
+		}
+		y++;
+	}
+	return (map);
+}
+
 int	is_backtrack_exit_collectibles_valid(char **map, int height, \
 int width, t_game *game)
 {
@@ -73,6 +87,7 @@ int width, t_game *game)
 
 	map_copy = copy_map(map, height, width);
 	map_copy2 = copy_map(map, height, width);
+	map_copy = replace_exit_by_wall(map_copy, height, '1');
 	if (map_copy == NULL)
 	{
 		return_error("Error: Unable to create map copy exit");
@@ -92,3 +107,4 @@ int width, t_game *game)
 	}
 	return (0);
 }
+

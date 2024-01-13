@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/11 13:18:39 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 14:37:52 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,16 @@ char	**get_map(char *argv_one, t_game *game)
 	char			*buf;
 
 	if (check_file_extension(argv_one) == 1)
-		return (return_error_null("Invalid file extension"));
+	{
+		return_error("Invalid file extension");
+		return (NULL);
+	}
 	fd = open(argv_one, O_RDONLY);
 	if (fd == -1)
-		return (return_error_null("Failed to open file"));
+	{
+		return_error("Failed to open file");
+		return (NULL);
+	}
 	buf = read_file_to_buffer(fd);
 	map = ft_split(buf, '\n');
 	free(buf);
@@ -90,9 +96,13 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		return (return_error("Invalid number of arguments"));
+	{
+		return_error("Invalid number of arguments");
+		return (1);
+	}
 	game.map = get_map(argv[1], &game);
 	if (game.map == NULL)
 		return (1);
 	init_graphics(&game);
+	return (0);
 }

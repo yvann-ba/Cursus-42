@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/12 01:20:42 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:14:29 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	research_exit_collectibles(char **cpy_map, t_pos player, char c, int height)
 		destination = research_char(cpy_map, start, c, height);
 		if (destination.x == -1 && destination.y == -1)
 			break ;
-		if (can_go_position(cpy_map, player, destination) == -1)
+		if (can_go_position(cpy_map, player, destination) == 0)
 			return (-1);
 		cpy_map = clean_map(cpy_map);
 		start.x = destination.x + 1;

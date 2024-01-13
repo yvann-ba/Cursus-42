@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/12 01:15:16 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:15:47 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int	is_map_valid(char **map, int height, int width, t_game *game)
 	if (check_upper_lower_walls(map, width, height) == 1 \
 	|| check_side_walls(map, height, width) == 1)
 		return (return_error ("Invalid map: Missing walls"));
-	is_backtrack_exit_collectibles_valid(map, height, width, game);
+	if (is_backtrack_exit_collectibles_valid(map, height, width, game) == 1)
+		return (1);
 	return (0);
 }
