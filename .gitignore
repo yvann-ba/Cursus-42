@@ -1,2 +1,4 @@
 so_long/libs/mlx
 *.o
+so_long/so_long_tester
+so_long/so_long_invalidator
