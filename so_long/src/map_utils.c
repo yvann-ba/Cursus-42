@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:27:05 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/16 11:49:38 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:44:50 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,28 @@ int	return_error(char *message)
 {
 	ft_printf("Error : %s\n", message);
 	return (1);
+}
+
+int	check_empty_lines(const char *buf)
+{
+	int	i;
+	int	newline_count;
+
+	i = 0;
+	newline_count = 0;
+	while (buf[i])
+	{
+		if (buf[i] == '\n')
+		{
+			newline_count++;
+			if (newline_count > 1)
+				return (1);
+		}
+		else
+			newline_count = 0;
+		i++;
+	}
+	return (0);
 }
 
 void	free_map(char **map, int height)

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:11:32 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/16 11:48:26 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:53:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void	*return_error_null(char *message);
 int		draw_map(void *game);
 void	draw_sprite(t_game *game, char c, int x, int y);
 void	load_sprites(t_game *game);
-
 void	cleanup(t_game *game);
-
+int		check_empty_lines(const char *buf);
+int		can_go_position(char **map, t_pos player, t_pos dest);
+int		check_file_extension(char *file);
 int		init_graphics(t_game *game);
 void	free_map(char **map, int height);
 char	**get_map(char *argv_one, t_game *game);
@@ -79,10 +80,8 @@ int		research_exit_collectibles(char **map, t_pos player, \
 char c, int height);
 char	**copy_map(char **original_map, int height, int width);
 int		count_elements(char **map, int height, int width, char element);
-
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
-
 void	move_player_up(t_game *game);
 void	move_player_down(t_game *game);
 void	move_player_left(t_game *game);

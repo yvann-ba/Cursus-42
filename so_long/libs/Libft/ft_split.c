@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 08:18:45 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/16 12:19:06 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:29:35 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ static size_t	ft_wcount(const char *str, char sep)
 	while (str[i])
 	{
 		if (str[i] != sep && str[i - 1] == sep)
-		{
 			cnt++;
-		}
 		i++;
 	}
 	return (cnt);

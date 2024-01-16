@@ -6,13 +6,23 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/16 12:27:22 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:52:25 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	can_go_position(char **map, t_pos player, t_pos dest);
+int	check_file_extension(char *file)
+{
+	int	len;
+
+	len = ft_strlen(file);
+	if (len < 5)
+		return (1);
+	if (ft_strncmp(file + len - 4, ".ber", 4) != 0)
+		return (1);
+	return (0);
+}
 
 static char	**clean_map(char **map)
 {
@@ -62,7 +72,7 @@ t_pos	research_char(char **map, t_pos start, char c, int height)
 	return (find);
 }
 
-static int	can_go_position(char **map, t_pos player, t_pos dest)
+int	can_go_position(char **map, t_pos player, t_pos dest)
 {
 	if ((player.x == dest.x) && (player.y == dest.y))
 	{

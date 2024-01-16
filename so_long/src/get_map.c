@@ -6,23 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/16 11:18:48 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:58:54 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	check_file_extension(char *file)
-{
-	int	len;
-
-	len = ft_strlen(file);
-	if (len < 5)
-		return (1);
-	if (ft_strncmp(file + len - 4, ".ber", 4) != 0)
-		return (1);
-	return (0);
-}
 
 static char	*read_file_to_buffer(int fd)
 {
@@ -64,23 +52,37 @@ static void	get_dimensions(char **map, t_game *game)
 	game->width = j;
 }
 
-char	**ftc_split(char const *s, char c);
-
-char	**get_map(char *argv_one, t_game *game)
+static	char	*read_and_validate_file(char *file_path)
 {
-	char			**map;
-	int				fd;
-	char			*buf;
+	int		fd;
+	char	*buf;
 
-	if (check_file_extension(argv_one) == 1)
+	if (check_file_extension(file_path) == 1)
 	{
 		return_error("Invalid file extension");
 		return (NULL);
 	}
-	fd = open(argv_one, O_RDONLY);
+	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
-		return (return_error_null ("Failed to open file"));
+		return (return_error_null("Failed to open file"));
 	buf = read_file_to_buffer(fd);
+	if (buf == NULL || check_empty_lines(buf) == 1)
+	{
+		free(buf);
+		return_error("Invalid map: Empty lines or read error");
+		return (NULL);
+	}
+	return (buf);
+}
+
+char	**get_map(char *argv_one, t_game *game)
+{
+	char	**map;
+	char	*buf;
+
+	buf = read_and_validate_file(argv_one);
+	if (buf == NULL)
+		return (NULL);
 	map = ft_split(buf, '\n');
 	free(buf);
 	if (!map)

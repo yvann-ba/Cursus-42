@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/so_long",
-            "args": ["so_long_invalidator/maps/invalid/empty_line_at_start.ber"],
+            "args": ["maps/invalid/empty_line_at_start.ber"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
