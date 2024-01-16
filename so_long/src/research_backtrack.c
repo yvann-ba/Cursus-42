@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:42:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/13 18:04:24 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:27:22 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,7 @@ int	research_exit_collectibles(char **cpy_map, t_pos player, char c, int height)
 		if (start.x + 1 < (int)ft_strlen(cpy_map[start.y]))
 			start.x++;
 		else
-		{
-			start.x = 0;
 			start.y++;
-		}
 	}
 	free_map(cpy_map, height);
 	return (1);

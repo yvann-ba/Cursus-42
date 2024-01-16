@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/04 14:03:26 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/16 12:00:41 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ ft_memchr.c ft_memset.c ft_strncmp.c ft_isalpha.c ft_strchr.c \
 ft_strrchr.c ft_isascii.c ft_memcmp.c ft_strlcat.c ft_tolower.c\
 ft_strnstr.c ft_strdup.c ft_calloc.c ft_strtrim.c ft_strjoin.c \
 ft_substr.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strcpy.c\
+ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strcpy.c \
+ft_strndup.c \
 \
 ft_printf/ft_printf.c ft_printf/ft_putlnbr_ulongbase.c \
 ft_printf/nbr_utils.c ft_printf/printf_utils.c \

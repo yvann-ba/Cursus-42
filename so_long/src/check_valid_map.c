@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:53:51 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/13 17:03:05 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 11:21:17 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,25 @@ static int	check_elements(char **map, int height, int width)
 {
 	int	y;
 	int	x;
+	int	line_length;
 
 	y = 0;
 	while (y < height)
 	{
+		if (map[y][0] == '\0' || map[y][0] == '\n')
+			return (1);
+		line_length = 0;
 		x = 0;
-		while (x < width)
+		while (map[y][x] != '\0')
 		{
 			if (!(map[y][x] == '0' || map[y][x] == '1' || map[y][x] == 'C' \
 			|| map[y][x] == 'E' || map[y][x] == 'P'))
 				return (1);
 			x++;
+			line_length++;
 		}
+		if (line_length != width)
+			return (1);
 		y++;
 	}
 	return (0);
@@ -87,7 +94,7 @@ int	is_map_valid(char **map, int height, int width, t_game *game)
 {
 	if (height < 3 || width < 3)
 	{
-		return_error("Invalid map: Too small");
+		return_error("Invalid map: Too small or empty lines");
 		return (1);
 	}
 	if (check_elements(map, height, width) == 1)

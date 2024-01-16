@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:59:18 by yvann             #+#    #+#             */
-/*   Updated: 2024/01/13 17:10:46 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/16 11:18:48 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void	get_dimensions(char **map, t_game *game)
 	game->height = i;
 	game->width = j;
 }
+
+char	**ftc_split(char const *s, char c);
 
 char	**get_map(char *argv_one, t_game *game)
 {

@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 15:32:00 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/16 12:18:36 by ybarbot          ###   ########.fr       */
+/*   Created: 2024/01/16 11:58:25 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/01/16 12:18:58 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strndup(const char *s, size_t n)
 {
-	int	i;
+	char	*str;
 
-	if (str == NULL)
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
 		return (NULL);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if ((unsigned char)str[i] == (unsigned char)c)
-			return ((char *)&str[i]);
-		i++;
-	}
-	if ((unsigned char)str[i] == (unsigned char)c)
-		return ((char *)&str[i]);
-	return (NULL);
+	ft_strlcpy(str, s, n + 1);
+	str[n] = '\0';
+	return (str);
 }
