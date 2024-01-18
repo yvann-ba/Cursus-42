@@ -11,9 +11,17 @@ This repository is a chronicle of my progress through 42's intensive curriculum,
 
 ## 🚧 Project Progress 🚧
 
-- [ ] Libft
-- [ ] ft_printf
-- [ ] get_next_line
+- [x] Libft
+- [x] ft_printf
+- [x] get_next_line
+- [x] Born2BeRoot
+- [x] so_long
+- [ ] push_swap
+
+## 🚧 Exams Progress 🚧
+
+- [x] Exam 02
+- [x] Exam 03
 
 ## Skills Developed in the Cursus 🛠️
 
