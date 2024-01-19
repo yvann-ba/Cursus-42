@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 11:07:11 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/21 10:08:33 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/12/14 10:19:15 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdio.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 # include <stdlib.h>
-# include "../Libft/libft.h"
-# include <fcntl.h>
 # include <unistd.h>
-# include <stdbool.h>
-# include <limits.h>
 
-typedef struct s_stack
-{
-	int				value;
-	struct s_stack	*next;
-}					t_stack;
-
-int return_error(char *str);
-
+char	*get_next_line(int fd);
+char	*handle_line(char **backup);
+char	*create_new_line(char **backup);
 
 #endif

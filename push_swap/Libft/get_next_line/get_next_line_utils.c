@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 11:07:11 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/21 10:09:56 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/12/14 10:19:55 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "get_next_line.h"
+#include "../libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "../Libft/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdbool.h>
-# include <limits.h>
-
-typedef struct s_stack
+char	*handle_line(char **backup)
 {
-	int				value;
-	struct s_stack	*next;
-}					t_stack;
+	char	*line;
+	char	*line_end;
+	char	*new_backup;
 
-int return_error(char *str);
+	line = create_new_line(backup);
+	line_end = ft_strchr(*backup, '\n');
+	if (line_end != NULL && *(line_end + 1) != '\0')
+	{
+		new_backup = ft_strdup(line_end + 1);
+		free(*backup);
+		*backup = new_backup;
+	}
+	else
+	{
+		free(*backup);
+		*backup = NULL;
+	}
+	return (line);
+}
 
-
-#endif

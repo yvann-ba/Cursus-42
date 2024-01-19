@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 11:07:11 by ybarbot          ###   ########.fr       */
+/*   Created: 2024/01/19 09:50:27 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/01/19 09:52:52 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "../Libft/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdbool.h>
-# include <limits.h>
-
-typedef struct s_stack
+int return_error(char *str)
 {
-	int				value;
-	struct s_stack	*next;
-}					t_stack;
-
-int return_error(char *str);
-
-
-#endif
+	ft_printf("Error : %s\n", str);
+	return (0);
+}

@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 11:07:11 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/08 08:08:50 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/10 11:26:40 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "../Libft/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdbool.h>
-# include <limits.h>
-
-typedef struct s_stack
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int				value;
-	struct s_stack	*next;
-}					t_stack;
+	size_t	i;
+	size_t	j;
 
-int return_error(char *str);
-
-
-#endif
+	if (size == 0 && dst == NULL)
+		return (0);
+	i = 0;
+	while (dst[i] && i < size)
+		i++;
+	j = 0;
+	if (size > 0)
+	{
+		while (src[j] && i + j < size - 1)
+		{
+			dst[i + j] = src[j];
+			j++;
+		}
+	}
+	if (i < size)
+		dst[i + j] = '\0';
+	return (i + ft_strlen((char *)src));
+}

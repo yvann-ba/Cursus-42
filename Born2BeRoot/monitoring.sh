@@ -42,4 +42,3 @@ sudo_commands=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
   echo "Network: IP $network_ip, MAC $network_mac"
   echo "Sudo Commands Executed: $sudo_commands"
 } | wall
-

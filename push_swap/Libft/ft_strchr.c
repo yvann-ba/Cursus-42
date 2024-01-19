@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 11:07:11 by ybarbot          ###   ########.fr       */
+/*   Created: 2023/11/04 15:32:00 by ybarbot           #+#    #+#             */
+/*   Updated: 2023/11/05 11:10:23 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "../Libft/libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdbool.h>
-# include <limits.h>
-
-typedef struct s_stack
+char	*ft_strchr(const char *str, int c)
 {
-	int				value;
-	struct s_stack	*next;
-}					t_stack;
-
-int return_error(char *str);
-
-
-#endif
+	int	i;
+	
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if ((unsigned char)str[i] == (unsigned char)c)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if ((unsigned char)str[i] == (unsigned char)c)
+		return ((char *)&str[i]);
+	return (NULL);
+}

@@ -5,42 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/18 11:15:20 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/19 11:06:15 by ybarbot          ###   ########.fr        #
+#    Created: 2023/11/15 09:38:47 by ybarbot           #+#    #+#              #
+#    Updated: 2023/11/20 16:38:01 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CFLAGS = -Wall -Wextra -Werror
+
+NAME = libftprintf.a
+
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g 
 
-SRCS = src/parsing.c src/parsing_utils.c
-OBJS = $(SRCS:.c=.o)
+SOURCES = printf_utils.c nbr_utils.c ft_printf.c ft_putlnbr_ulongbase.c
 
-NAME = push_swap
-
-LIBFT_DIR = Libft
-LIBFT = $(LIBFT_DIR)/libft.a
-INCLUDES = -I/usr/include -I$(LIBFT_DIR)/includes
-
-.PHONY: all clean fclean re libft
+OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(LIBFT):
-	$(MAKE) --quiet -C $(LIBFT_DIR)
+$(NAME): $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
-
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
-
-clean:
-	rm -f $(OBJS)
-	$(MAKE) --quiet -C $(LIBFT_DIR) clean
-
-fclean: clean
-	rm -f $(NAME)
-	$(MAKE) --quiet -C $(LIBFT_DIR) fclean
-
+clean :
+		rm -f $(OBJECTS)
+fclean : clean
+		rm -f $(NAME)
 re: fclean all
+
+.PHONY: all clean fclean re
