@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 13:27:52 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:20:24 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ char *combine_args(int argc, char **argv)
 	return (str);
 }
 
-char **split_args(char *combined_args, char **tab)
+int	split_args(char *combined_args, char **tab)
 {
 	int i;
+
+	i = 0;
 	tab = ft_split(combined_args, ' ');
 	free(combined_args);
 	while (tab[i])
@@ -63,29 +65,35 @@ int *convert_tab_to_ints(char **tab)
 
 int parsing(int argc, char **argv)
 {
-	int i;
-	int *nb_tab;
-	char *combined_args;
-	char **tab;
+	int 	i;
+	int 	*nb_tab;
+	char 	*combined_args;
+	char 	**tab;
+	int 	tab_len;
 	
 	if (argc > 1)
 	{
 		combined_args = combine_args(argc, argv);
-		i = split_args(combined_args, tab);
+		tab_len = split_args(combined_args, tab);
 		nb_tab = convert_tab_to_ints(tab);
 		ft_free_tab((void **)tab, i);
 		if (nb_tab == NULL)
 			return (return_error("malloc error"));
 		i = 0;
-		
+		while (i < tab_len)
+		{
+			ft_printf("%d\n", nb_tab[i]);
+			i++;
+		}
+		free(nb_tab);
 	}
 	else
-		return (0);
-		
+		return (return_error("no args"));
+	return (1);	
 }
 
 int main(int argc, char **argv)  
 {
-
+	parsing(argc, argv);
 	return (0);
 }
