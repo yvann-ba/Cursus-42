@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_free_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 15:32:06 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/22 09:56:32 by ybarbot          ###   ########.fr       */
+/*   Created: 2024/01/22 10:53:35 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/01/22 10:57:16 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+void ft_free_int_tab(int **tab, int size)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
+	int i;
+
+	if (!tab)
+		return ;
+	i = 0;
+	while (i < size)
+		free(tab[i++]);
+	free(tab);
 }

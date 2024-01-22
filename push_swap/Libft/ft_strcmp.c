@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 15:32:06 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/22 09:56:32 by ybarbot          ###   ########.fr       */
+/*   Created: 2024/01/22 10:05:05 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/01/22 10:05:12 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
+    unsigned int i;
+
+    i = 0;
+    while (s1[i] || s2[i])
+    {
+        if ((unsigned char)s1[i] != (unsigned char)s2[i])
+            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+        i++;
+    }
+    return (0);
 }

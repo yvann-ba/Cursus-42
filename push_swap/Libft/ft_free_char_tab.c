@@ -6,29 +6,20 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:05:20 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 13:02:39 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:52:26 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(void **tab, int height)
+void	ft_free_char_tab(char **tab)
 {
-	int	i;
+	int i;
 
 	if (!tab)
 		return ;
 	i = 0;
-	while (i < height)
-	{
-		if (tab[i])
-		{
-			free(tab[i]);
-			tab[i] = NULL;
-		}
-		
-		i++;
-	}
+	while (tab[i])
+		free(tab[i++]);
 	free(tab);
-	tab = NULL;
 }

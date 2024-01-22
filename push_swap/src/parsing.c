@@ -6,12 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:24 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/22 11:52:54 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 char *combine_args(int argc, char **argv)
 {
@@ -32,68 +31,82 @@ char *combine_args(int argc, char **argv)
 	return (str);
 }
 
-int	split_args(char *combined_args, char **tab)
+int	split_args(char *combined_args, char ***tab)
 {
 	int i;
 
 	i = 0;
-	tab = ft_split(combined_args, ' ');
+	*tab = ft_split(combined_args, ' ');
+	if (*tab == NULL)
+		return (ft_putendl_fd("Error tab null"));
 	free(combined_args);
-	while (tab[i])
+	while ((*tab)[i])
 		i++;
 	return (i);
 }
-int *convert_tab_to_ints(char **tab)
+int *convert_tab_to_ints(char **tab, int *error)
 {
-	int i;
-	int *nb_tab;
+    int i;
+    int *nb_tab;
+    int conversion_error;
 
-	i = 0;
-	while (tab[i])
-		i++;
-	nb_tab = malloc(sizeof(int) * i);
-	if (nb_tab == NULL)
-		return (NULL);
-	i = 0;
-	while (tab[i])
-	{
-		nb_tab[i] = ft_atoi(tab[i]);
-		i++;
-	}
-	return (nb_tab);
+    i = 0;
+    while (tab[i])
+        i++;
+    nb_tab = malloc(sizeof(int) * i);
+    if (nb_tab == NULL)
+        return (NULL);
+    i = 0;
+    while (tab[i])
+    {
+        nb_tab[i] = ft_atoi(tab[i], &conversion_error);
+        if (conversion_error)
+        {
+            free(nb_tab);
+            *error = 1;
+            return (NULL);
+        }
+        i++;
+    }
+    *error = 0;
+    return (nb_tab);
 }
 
-int parsing(int argc, char **argv)
+int parsing(int argc, char **argv, int **nb_tab)
 {
-	int 	i;
-	int 	*nb_tab;
 	char 	*combined_args;
 	char 	**tab;
 	int 	tab_len;
+	int 	error;
 	
 	if (argc > 1)
 	{
 		combined_args = combine_args(argc, argv);
-		tab_len = split_args(combined_args, tab);
-		nb_tab = convert_tab_to_ints(tab);
-		ft_free_tab((void **)tab, i);
-		if (nb_tab == NULL)
-			return (return_error("malloc error"));
-		i = 0;
-		while (i < tab_len)
+		tab_len = split_args(combined_args, &tab);
+		if (tab_len < 0 || !check_valid_duplicates(tab))
 		{
-			ft_printf("%d\n", nb_tab[i]);
-			i++;
+			ft_free_char_tab(tab);
+			return (ft_putendl_fd("Error"));
 		}
-		free(nb_tab);
+		*nb_tab = convert_tab_to_ints(tab, &error);
+		ft_free_char_tab(tab);
+		if (error)
+			return (ft_putendl_fd("Error"));
+		if (is_sorted(*nb_tab, tab_len))
+			return (0);
 	}
 	else
-		return (return_error("no args"));
+		return (0);
 	return (1);	
 }
 
 int main(int argc, char **argv)  
 {
-	parsing(argc, argv);
+	int *nb_tab;
+	
+	nb_tab = NULL;
+	parsing(argc, argv, &nb_tab);
+	if (nb_tab != NULL)
+		free(nb_tab);
 	return (0);
 }
