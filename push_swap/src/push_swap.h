@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/22 11:28:08 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/23 09:46:51 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-int return_error(char *str);
-int check_valid_duplicates(char **tab);
-int is_sorted(int *tab, int size);
-
-
+int	return_error(char *str);
+int	check_valid_duplicates(char **tab);
+int	is_sorted(int *tab, int size);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:15:20 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/19 11:06:15 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/23 10:06:06 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ INCLUDES = -I/usr/include -I$(LIBFT_DIR)/includes
 all: $(NAME)
 
 $(LIBFT):
-	$(MAKE) --quiet -C $(LIBFT_DIR)
+	$(MAKE) bonus --quiet -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
