@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_nlstdelone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvann <yvann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 08:32:23 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/14 16:49:16 by yvann            ###   ########.fr       */
+/*   Created: 2023/11/13 08:33:49 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/01/23 11:50:20 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_nlstdelone(t_nlist *lst, void (*del)(int))
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	if (!lst || !del)
+		return ;
+	del(lst->number);
+	free(lst);
 }
+

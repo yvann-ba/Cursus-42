@@ -6,14 +6,14 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:15:20 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/23 10:06:06 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/23 11:08:40 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g 
 
-SRCS = src/parsing.c src/parsing_utils.c
+SRCS = src/parsing.c src/parsing_utils.c src/actions.c src/actions2.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = push_swap

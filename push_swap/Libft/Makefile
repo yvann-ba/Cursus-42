@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:28:56 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/22 10:54:47 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/23 11:51:39 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ ft_printf/nbr_utils.c ft_printf/printf_utils.c \
 \
 get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
 
-BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
-ft_lstdelone.c ft_lstclear.c ft_lstmap.c ft_lstiter.c ft_lstlast.c
+BONUS = ft_nlstnew.c ft_nlstadd_front.c ft_nlstsize.c ft_nlstadd_back.c \
+ft_nlstdelone.c ft_nlstclear.c ft_nlstmap.c ft_nlstiter.c ft_nlstlast.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

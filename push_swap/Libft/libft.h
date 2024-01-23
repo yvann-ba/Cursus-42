@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 09:23:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 09:48:08 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/23 12:20:26 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_nlist
+{
+	int				number;
+	struct s_nlist	*next;
+}					t_nlist;
+
 
 int		ft_toupper(int c);
 int		ft_tolower(int c);
@@ -60,15 +67,20 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_putendl_fd(char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putnbr_fd(int n, int fd);
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+t_nlist	*ft_nlstnew(int number);
+t_nlist	*ft_nlstnew(int number);
+int		ft_nlstsize(t_nlist *lst);
+t_nlist	*ft_nlstlast(t_nlist *lst);
+void	ft_nlstiter(t_nlist *lst, void (*f)(int));
+void	ft_nlstdelone(t_nlist *lst, void (*del)(int));
+void	ft_nlstclear(t_nlist **lst);
+void	ft_nlstadd_back(t_nlist **lst, t_nlist *new);
+t_nlist	*ft_nlstmap(t_nlist *lst, int (*f)(int), void (*del)(int));
+t_nlist	*ft_nlstmap_helper(t_nlist *lst, int (*f)(int),
+		void (*del)(int), t_nlist **new_lst);
+
+
 char	*ft_strndup(const char *s, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 
