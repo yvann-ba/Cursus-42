@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:33:11 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 11:46:41 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:44:07 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ void	ft_nlstadd_back(t_nlist **lst, t_nlist *new)
 	else
 		*lst = new;
 }
-

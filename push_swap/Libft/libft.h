@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 09:23:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 12:20:26 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:43:47 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_nlist
 	int				number;
 	struct s_nlist	*next;
 }					t_nlist;
-
 
 int		ft_toupper(int c);
 int		ft_tolower(int c);
@@ -78,8 +77,7 @@ void	ft_nlstclear(t_nlist **lst);
 void	ft_nlstadd_back(t_nlist **lst, t_nlist *new);
 t_nlist	*ft_nlstmap(t_nlist *lst, int (*f)(int), void (*del)(int));
 t_nlist	*ft_nlstmap_helper(t_nlist *lst, int (*f)(int),
-		void (*del)(int), t_nlist **new_lst);
-
+			void (*del)(int), t_nlist **new_lst);
 
 char	*ft_strndup(const char *s, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);

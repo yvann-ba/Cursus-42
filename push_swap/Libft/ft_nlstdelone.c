@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:33:49 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 11:50:20 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:44:13 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,3 @@ void	ft_nlstdelone(t_nlist *lst, void (*del)(int))
 	del(lst->number);
 	free(lst);
 }
-

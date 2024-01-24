@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 10:00:03 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:14:14 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,8 @@ int	parsing(int argc, char **argv, int **nb_tab)
 			return (ft_putendl_fd("Error"));
 		if (is_sorted(*nb_tab, tab_len))
 			return (0);
+		return (tab_len);
 	}
 	else
 		return (0);
-	return (1);
-}
-
-int	main(int argc, char **argv)
-{
-	int	*nb_tab;
-
-	nb_tab = NULL;
-	parsing(argc, argv, &nb_tab);
-	if (nb_tab != NULL)
-		free(nb_tab);
-	return (0);
 }

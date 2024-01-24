@@ -1,3 +1,6 @@
 so_long/libs/mlx
 *.o
 *.a
+push_swap/push_swap_tester
+push_swap/push_swap_visualizer
+push_swap/Push-Swap-Tester

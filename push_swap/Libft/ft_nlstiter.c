@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:35:18 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 11:50:04 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:43:16 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ void	ft_nlstiter(t_nlist *lst, void (*f)(int))
 		lst = lst->next;
 	}
 }
-

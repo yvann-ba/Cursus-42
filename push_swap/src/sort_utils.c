@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nlstadd_front.c                                 :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 08:30:52 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/24 09:44:19 by ybarbot          ###   ########.fr       */
+/*   Created: 2024/01/24 10:31:10 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/01/24 10:31:54 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_nlstadd_front(t_nlist **lst, t_nlist *new)
+void print_stack(t_nlist *stack)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+    t_nlist *current = stack;
+
+    while (current != NULL)
+    {
+        ft_printf("%d\n", current->number);
+        current = current->next;
+    }
 }
