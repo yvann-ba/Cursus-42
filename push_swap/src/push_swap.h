@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/24 11:30:46 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/25 13:00:42 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ int		is_sorted(int *tab, int size);
 t_nlist	*array_to_list(int *arr, int size);
 void	sort_three(t_nlist **stack_a);
 void	sort_four(t_nlist **stack_a, t_nlist **stack_b);
-void	sort_five(t_nlist **stack_a, t_nlist **stack_b);
+void	sort_five(t_nlist **stack_a, t_nlist **stack_b, int size);
 void	sort(t_nlist **stack_a, t_nlist **stack_b, int tab_len);
 void	print_stack(t_nlist *stack);
+int 	find_smallest(t_nlist *stack);
+void smart_rotate(t_nlist **stack, int index, int size);
+
 
 void	sa(t_nlist **stack_a);
 void	sb(t_nlist **stack_b);

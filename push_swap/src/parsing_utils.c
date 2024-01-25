@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:50:27 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/23 12:20:51 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/25 09:45:46 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_valid_duplicates(char **tab)
 		j = 0;
 		while (current_str[j])
 		{
-			if (!ft_isdigit(current_str[j]))
+			if (!ft_check_valid_number(&current_str[j]))
 				return (0);
 			j++;
 		}

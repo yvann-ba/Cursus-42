@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/24 10:14:14 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/25 09:24:32 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ int	parsing(int argc, char **argv, int **nb_tab)
 		if (tab_len < 0 || !check_valid_duplicates(tab))
 		{
 			ft_free_char_tab(tab);
-			return (ft_putendl_fd("Error"));
+			return (ft_putendl_fd("Error duplicate"));
 		}
 		*nb_tab = convert_tab_to_ints(tab, &error);
 		ft_free_char_tab(tab);
 		if (error)
-			return (ft_putendl_fd("Error"));
+			return (ft_putendl_fd("Error conversion"));
 		if (is_sorted(*nb_tab, tab_len))
 			return (0);
 		return (tab_len);

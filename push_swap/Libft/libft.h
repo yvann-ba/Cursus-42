@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 09:23:33 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/24 09:43:47 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/25 09:44:39 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_putendl_fd(char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putnbr_fd(int n, int fd);
+int		ft_check_valid_number(const char *str);
 
 t_nlist	*ft_nlstnew(int number);
 t_nlist	*ft_nlstnew(int number);
