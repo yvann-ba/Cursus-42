@@ -9,6 +9,12 @@
 		"*.tcc": "c",
 		"unordered_map": "c",
 		"unordered_set": "c",
-		"ranges": "c"
-	}
+		"ranges": "c",
+		"bitset": "c",
+		"initializer_list": "c",
+		"span": "c",
+		"regex": "c",
+		"utility": "c"
+	},
+	"cmake.configureOnOpen": true
 }

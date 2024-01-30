@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:22 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/25 13:38:57 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:25:47 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	rr(t_nlist **stack_a, t_nlist **stack_b)
 		last->next = first;
 		first->next = NULL;
 	}
-
 	ft_printf("rr\n");
 }
 

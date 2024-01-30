@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:31:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/25 13:01:30 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/30 11:08:10 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,43 @@ void	print_stack(t_nlist *stack)
 	}
 }
 
-void smart_rotate(t_nlist **stack, int index, int size)
+void	smart_rotate(t_nlist **stack, int index, int size)
 {
-    if (index < size / 2)
-    {
-        while (index--)
-            ra(stack);
-    }
-    else
-    {
-        while (index++ < size)
-            rra(stack);
-    }
+	if (size > 1)
+	{
+		if (index < size / 2)
+		{
+			while (index--)
+				ra(stack);
+		}
+		else
+		{
+			while (index++ < size)
+				rra(stack);
+		}
+	}
+}
+
+void sort_array(int *arr, int size)
+{
+	int i;
+	int j;
+	int tmp;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				tmp = arr[j + 1];
+				arr[j + 1] = arr[j];
+				arr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
 }
