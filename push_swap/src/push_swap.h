@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/31 11:14:36 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:17:13 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ void	process_chunk(t_nlist **stack_a, t_nlist **stack_b,
 			int chunk_limit, int median);
 void	process_remaining_values(t_nlist **stack_a, t_nlist **stack_b,
 			int remaining);
+			
+int		get_stack_size(t_nlist *stack);
+int		is_empty(t_nlist *stack);
+void	sort_stack_a(t_nlist **stack_a, t_nlist **stack_b);
+int		find_target_position(t_nlist *stack, int number);
+int		find_best_move(t_nlist *stack_a, t_nlist *stack_b);
+int		calculate_total_moves(t_nlist *stack_a, t_nlist *stack_b,
+int number, int index_in_b);
+
+
 
 void	sa(t_nlist **stack_a);
 void	sb(t_nlist **stack_b);

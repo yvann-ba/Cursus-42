@@ -6,7 +6,7 @@
 #    By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:15:20 by ybarbot           #+#    #+#              #
-#    Updated: 2024/01/30 11:10:16 by ybarbot          ###   ########.fr        #
+#    Updated: 2024/01/31 13:01:39 by ybarbot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -g 
 
 SRCS = src/parsing.c src/parsing_utils.c src/actions.c src/actions2.c \
-src/main.c src/sort_num.c src/sort_utils.c src/sort_num2.c 
+src/main.c src/sort_small.c src/sort_utils.c src/sort_chunks.c src/sort_big.c
 
 OBJS = $(SRCS:.c=.o)
 
