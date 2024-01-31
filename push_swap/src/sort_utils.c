@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:31:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/30 11:08:10 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/01/31 11:17:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	smart_rotate(t_nlist **stack, int index, int size)
 	}
 }
 
-void sort_array(int *arr, int size)
+void	sort_array(int *arr, int size)
 {
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	while (i < size - 1)
