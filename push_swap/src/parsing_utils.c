@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:50:27 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/25 09:45:46 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:07:30 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_valid_duplicates(char **tab)
 		j = 0;
 		while (current_str[j])
 		{
-			if (!ft_check_valid_number(&current_str[j]))
+			if (ft_check_valid_number(&current_str[j]) == 0)
 				return (0);
 			j++;
 		}
@@ -81,4 +81,20 @@ void	rrr(t_nlist **stack_a, t_nlist **stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
+}
+
+int	is_only_whitespace(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t'
+			&& str[i] != '\n' && str[i] != '\v' && str[i] != '\f'
+			&& str[i] != '\r')
+			return (0);
+		i++;
+	}
+	return (i > 0);
 }
