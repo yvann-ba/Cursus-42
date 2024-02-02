@@ -6,23 +6,11 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:31:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/31 13:13:53 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:33:03 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_nlist *stack)
-{
-	t_nlist	*current;
-
-	current = stack;
-	while (current != NULL)
-	{
-		ft_printf("%d\n", current->number);
-		current = current->next;
-	}
-}
 
 void	sort_array(int *arr, int size)
 {
@@ -64,4 +52,28 @@ int	get_stack_size(t_nlist *stack)
 		stack = stack->next;
 	}
 	return (size);
+}
+
+void	smart_rotate_b(t_nlist **stack_b, int index, int size)
+{
+	if (size > 1)
+	{
+		if (index <= size / 2)
+		{
+			while (index > 0)
+			{
+				rb(stack_b);
+				index--;
+			}
+		}
+		else
+		{
+			index = size - index;
+			while (index > 0)
+			{
+				rrb(stack_b);
+				index--;
+			}
+		}
+	}
 }
