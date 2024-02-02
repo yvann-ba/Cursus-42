@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:03:02 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/31 13:57:47 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:07:44 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	split_into_four_chunks(t_nlist **stack_a, t_nlist **stack_b, int size)
 	int	i;
 
 	find_three_medians(*stack_a, size, medians);
-	chunk_limit = size / 4;
+	chunk_limit = (size - 3) / 4;
 	i = 0;
 	while (i < 3)
 	{

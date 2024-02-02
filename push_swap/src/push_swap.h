@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/31 13:17:13 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/02 14:26:12 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
+
+
+typedef struct s_moves
+{
+	int moves_in_a;
+	int moves_in_b;
+	int total_moves;
+	int best_index;
+	int target_pos_in_a;
+} t_moves;
 
 int		return_error(char *str);
 int		parsing(int argc, char **argv, int **nb_tab);
@@ -47,9 +57,9 @@ int		get_stack_size(t_nlist *stack);
 int		is_empty(t_nlist *stack);
 void	sort_stack_a(t_nlist **stack_a, t_nlist **stack_b);
 int		find_target_position(t_nlist *stack, int number);
-int		find_best_move(t_nlist *stack_a, t_nlist *stack_b);
-int		calculate_total_moves(t_nlist *stack_a, t_nlist *stack_b,
-int number, int index_in_b);
+t_moves		find_best_move(t_nlist *stack_a, t_nlist *stack_b);
+t_moves		calculate_total_moves(t_nlist *stack_a, t_nlist *stack_b, int number, int index_in_b);
+void	smart_rotate_b(t_nlist **stack_b, int index, int size);
 
 
 

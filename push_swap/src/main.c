@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:13:06 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/31 13:24:51 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/02 13:52:47 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	execute_push_swap(int *nb_tab, int tab_len)
 	else
 	{
 		split_into_four_chunks(&stack_a, &stack_b, tab_len);
+		sort_three(&stack_a);
 		sort_stack_a(&stack_a, &stack_b);
 	}
 	ft_nlstclear(&stack_a);

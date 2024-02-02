@@ -14,7 +14,10 @@
 		"initializer_list": "c",
 		"span": "c",
 		"regex": "c",
-		"utility": "c"
+		"utility": "c",
+		"variant": "c",
+		"chrono": "c",
+		"push_swap.h": "c"
 	},
 	"cmake.configureOnOpen": true
 }
