@@ -6,19 +6,17 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:01 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/02/06 13:05:38 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:37:43 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include "../Libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdbool.h>
 # include <limits.h>
 
 typedef struct s_moves
@@ -61,8 +59,7 @@ t_moves	calculate_total_moves(t_nlist *stack_a, t_nlist *stack_b,
 			int number, int index_in_b);
 void	smart_rotate_b(t_nlist **stack_b, int index, int size);
 int		has_leading_zeros(const char *str);
-int check_num_duplicates(int *arr, int size);
-
+int		check_num_duplicates(int *arr, int size);
 
 void	sa(t_nlist **stack_a);
 void	sb(t_nlist **stack_b);

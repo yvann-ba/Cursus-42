@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:13:06 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/02/06 13:06:17 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:37:12 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,24 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int check_num_duplicates(int *arr, int size) 
+int	check_num_duplicates(int *arr, int size)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (i < size - 1)
+	i = 0;
+	while (i < size - 1)
 	{
-        j = i + 1;
-        while (j < size) 
+		j = i + 1;
+		while (j < size)
 		{
-            if (arr[i] == arr[j])
-                return (1);
-            j++;
-        }
-        i++;
-    }
-    return (0);
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 static	void	sort_stack_based_on_size(t_nlist **stack_a,

@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:10 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/02/06 13:25:50 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:36:30 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,24 @@ int	*convert_tab_to_ints(char **tab, int *error)
 	return (nb_tab);
 }
 
-int process_args(char **tab, int tab_len, int **nb_tab)
+int	process_args(char **tab, int tab_len, int **nb_tab)
 {
-    int error;
+	int	error;
 
-    if (!check_valid_duplicates(tab))
-    {
-        ft_free_char_tab(tab);
-        return (ft_putendl_fd("Error"));
-    }
-    *nb_tab = convert_tab_to_ints(tab, &error);
+	if (!check_valid_duplicates(tab))
+	{
+		ft_free_char_tab(tab);
+		return (ft_putendl_fd("Error"));
+	}
+	*nb_tab = convert_tab_to_ints(tab, &error);
 	ft_free_char_tab(tab);
 	if (error)
 		return (ft_putendl_fd("Error"));
-	if (check_num_duplicates(*nb_tab, tab_len)) 
-        return (ft_putendl_fd("Error"));
-    if (is_sorted(*nb_tab, tab_len))
-        return (0);
-    return (tab_len);
+	if (check_num_duplicates(*nb_tab, tab_len))
+		return (ft_putendl_fd("Error"));
+	if (is_sorted(*nb_tab, tab_len))
+		return (0);
+	return (tab_len);
 }
 
 int	parsing(int argc, char **argv, int **nb_tab)
@@ -108,7 +108,7 @@ int	parsing(int argc, char **argv, int **nb_tab)
 			ft_free_char_tab(tab);
 			return (ft_putendl_fd("Error"));
 		}
-		return process_args(tab, tab_len, nb_tab);
+		return (process_args(tab, tab_len, nb_tab));
 	}
 	else
 		return (0);
