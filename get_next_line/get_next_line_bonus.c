@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:02:13 by yvann             #+#    #+#             */
-/*   Updated: 2023/12/01 14:10:13 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/06 10:45:02 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,4 @@ char	*get_next_line(int fd)
 	line = handle_line(&backup[fd]);
 	return (line);
 }
+
