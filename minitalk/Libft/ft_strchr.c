@@ -6,7 +6,7 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 15:32:00 by ybarbot           #+#    #+#             */
-/*   Updated: 2023/11/05 11:10:23 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:59:07 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strchr(const char *str, int c)
 {
 	int	i;
-	
+
 	if (str == NULL)
 		return (NULL);
 	i = 0;

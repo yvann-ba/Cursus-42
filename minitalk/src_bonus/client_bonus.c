@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:16:25 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/02/13 13:56:30 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:05:25 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	g_srv_ready = 1;
 
@@ -88,7 +88,7 @@ int	main(int ac, char **av)
 {
 	if (ac != 3)
 	{
-		ft_printf("Usage: ./client <PID> <message>\n");
+		ft_printf("Usage: ./client (PID) (message)\n");
 		return (1);
 	}
 	init_signal_handler();

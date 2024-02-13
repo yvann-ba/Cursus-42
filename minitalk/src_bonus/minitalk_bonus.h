@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybarbot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:05:20 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/01/19 12:06:01 by ybarbot          ###   ########.fr       */
+/*   Created: 2024/02/06 13:52:15 by ybarbot           #+#    #+#             */
+/*   Updated: 2024/02/13 14:00:00 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_free_tab(void **tab, int height)
-{
-	int	i;
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-	if (!tab)
-		return ;
-	i = 0;
-	while (i < height)
-	{
-		if (tab[i])
-		{
-			free(tab[i]);
-			tab[i] = NULL;
-		}
-		
-		i++;
-	}
-	free(tab);
-	tab == NULL;
-}
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
+# include "../Libft/libft.h"
+
+#endif

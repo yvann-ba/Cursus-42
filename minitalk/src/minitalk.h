@@ -6,14 +6,16 @@
 /*   By: ybarbot <ybarbot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:52:15 by ybarbot           #+#    #+#             */
-/*   Updated: 2024/02/06 14:52:55 by ybarbot          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:00:25 by ybarbot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include "../Libft/libft.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-void	send_message(int pid, char *message);
-void	handle_signal(int sig, siginfo_t *info, void *ucontext);
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
+# include "../Libft/libft.h"
+
+#endif
